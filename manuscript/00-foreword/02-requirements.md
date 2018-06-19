@@ -8,7 +8,7 @@ The book uses React as library to teach about GraphQL for client-side applicatio
 
 After all, it's not necessary to be a React developer in order to learn about GraphQL in modern applications. If you are developing with another framework, such as Angular, or library, such as Vue, all these things about GraphQL taught in this book can still be applied in your applications. GraphQL is framework and library agnostic, because it is only a query language.
 
-Still, since the book uses React for the sake of teaching state management in a proper context, if you are not familiar with React or need to have a refresher on the topic, I encourage you to read the precedent book: [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/). It is for free and should enable everyone to learn React. However, you can decide to pay something to support the project.
+Still, since the book uses React for the sake of teaching GraphQL in a proper context, if you are not familiar with React or need to have a refresher on the topic, I encourage you to read the precedent book: [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/). It is for free and should enable everyone to learn React. However, you can decide to pay something to support the project.
 
 Even though the Road to learn React is for free, people with lacking education have no access to these resources in the first place. They have to be educated in the English language to be enabled to access it. The Road to learn React attempts [to support education in the developing world](https://www.robinwieruch.de/giving-back-by-learning-react/) on an occasionally basis, but it is a tough undertaking since the book itself is pay what you want.
 
