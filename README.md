@@ -1,5 +1,7 @@
 # The Road to GraphQL [Book]
 
+[![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
+
 The official repository for [The Road to GraphQL](https://roadtoreact.com/).
 
 ## Updates, Help and Support
