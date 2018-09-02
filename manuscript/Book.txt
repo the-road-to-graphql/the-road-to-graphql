@@ -5,6 +5,7 @@
 00-foreword/02-requirements.md
 00-foreword/03-faq.md
 00-foreword/04-how-to-read-the-book.md
+00-foreword/05-challenge.md
 
 {mainmatter}
 

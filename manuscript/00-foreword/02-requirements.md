@@ -1,6 +1,6 @@
 ## Requirements
 
-What are the requirements to read the book? First of all, you should be familiar with the basics of web development. You should know how to use HTML, CSS and JavaScript. Perhaps it makes sense to know the term [API](https://www.robinwieruch.de/what-is-an-api-javascript/) too, because you will use APIs in the book. In addition, I encourage you to join the official [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for the book to get help or to help others.
+To follow this book, you should be familiar with the basics of web development, i.e how to use HTML, CSS, and JavaScript. It also makes sense to understand how [APIs](https://www.robinwieruch.de/what-is-an-api-javascript/) work, as they will be covered thoroughly. Also, I encourage you to join the official [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) to be a part of a growing React community where you can learn from and help others.
 
 ### React
 
@@ -13,6 +13,10 @@ Still, since the book uses React for the sake of teaching GraphQL in a proper co
 Even though the Road to learn React is for free, people with lacking education have no access to these resources in the first place. They have to be educated in the English language to be enabled to access it. The Road to learn React attempts [to support education in the developing world](https://www.robinwieruch.de/giving-back-by-learning-react/) on an occasionally basis, but it is a tough undertaking since the book itself is pay what you want.
 
 In addition, the Road to learn React teaches you to make the transition from JavaScript ES5 to JavaScript ES6. After having read the Road to learn React, you should possess all the knowledge to read this book. It builds up on the React book perfectly.
+
+### Editor and Terminal
+
+You will need a IDE or text editor and terminal (command line tool) to build the applications yourself while reading the book. I have provided [a setup guide](https://www.robinwieruch.de/developer-setup/) if you need additional help. Optionally, we recommend you keep your projects in GitHub while conducting the exercises in this book. There is a [short guide](https://www.robinwieruch.de/git-essential-commands/) on how to use these tools. Github has excellent version control, so you can see what changes were made if you make a mistake or just want a more direct way to follow along.
 
 ### Node and NPM
 
@@ -31,10 +35,3 @@ npm --version
 ~~~~~~~~
 
 If you read the Road to learn React, you should be familiar with the setup already. The book gives you a short introduction into the npm ecosystem on the command line, too. So if you are not familiar with this, once again you can pick up the Road to learn React book.
-
-### Editor and Terminal
-
-What about the development environment? You will need a running editor or IDE and terminal (command line tool). You can [follow my setup guide](https://www.robinwieruch.de/developer-setup/). It is adjusted for MacOS users, but you can find a Windows setup guide for React too. In general, there is a ton of articles out there that will show you how to setup a web development environment in a more elaborated way for your OS.
-
-Optionally, you can use git and GitHub on your own, while conducting the exercises in the book, to keep your projects and the progress in repositories on GitHub. There exists a [little guide](https://www.robinwieruch.de/git-essential-commands/) on how to use these tools. But once again, it is not mandatory for the book and can be overwhelming when learning everything from scratch. So you can skip it if you are a newcomer in web development to focus on the essential parts taught in this book.
-
