@@ -8,9 +8,9 @@ Personally I write a lot about my learnings. That's how I got where I am right n
 
 * If you feel confident recording your learning adventure, share your way through the book on Facebook Live, YouTube Live or Twitch. It helps you to stay concentrated and work your way through the book. Even though you don't have many people following your live session, you can always use the video to put it on YouTube afterward. Besides it is a great way to verbalize your problems and how you are going to solve them.
 
-I would love to see people doing especially the last breakpoint: record yourself while reading this book, implementing the application(s), and conducting the exercises, and put the final version on YouTube. If parts in between of the recording are taking longer, just cut the video or use a timelapse effect for them. If you get stuck and need to fix a bug, don't leave it out but rather include these passages in the video, because they are so valuable for your audience which may run into the same issues. I believe it is important to have these parts in your video. A couple of tipps for the video:
+I would love to see people doing especially the last breakpoint: record yourself while reading this book, implementing the application(s), and conducting the exercises, and put the final version on YouTube or Twitch. If parts in between of the recording are taking longer, just cut the video or use a timelapse effect for them. If you get stuck and need to fix a bug, don't leave it out but rather include these passages in the video, because they are valuable for your audience which may run into the same issues. I believe it is important to keep these parts in your video. A couple of tipps for the video:
 
-* Do it in your native language or in English if you feel comfortable with it.
+* Do it in your native language (or in English if you feel comfortable with it).
 
 * Verbalize your thoughts, the things you are doing or the problems you are running into. Having a visual video is only one part of the challenge, but the other part is you narrating through the implementation. It doesn't have to be perfect. Instead it should feel natural and not polished as all the other video courses online where nobody runs into problems.
 
