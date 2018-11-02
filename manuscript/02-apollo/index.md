@@ -1,1 +1,1 @@
-# Apollo and its Ecosystem
+# Apollo

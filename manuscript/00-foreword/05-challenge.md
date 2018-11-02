@@ -1,4 +1,4 @@
-# Challenge
+## Challenge
 
 Personally I write a lot about my learnings. That's how I got where I am right now. You are teaching a topic at its best when you have just learned about it yourself. Since teaching helped me a lot in my career, I want you to experience the same effects of it. But first you have to do the cause: teaching yourself. My challenge for the book is the following: teach others what you are learning while reading the book. A couple of breakpoints on how you could achieve it:
 
