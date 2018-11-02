@@ -1,4 +1,4 @@
-# Last but not Least
+# Outline
 
 Well, if I haven't lost you by now, you can read a bit further to make it to the end of this book. The last short chapters of this book have the objective to inspire you to apply your learnings. So far, the book has taught you how to use GraphQL in JavaScript on the client- and server-side. You have used React on the client-side and Express on the server-side. On both ends you got to use Apollo eventually to have a sophisticated GraphQL library between both entities. However, there is plenty of room to explore the ecosystem. If you haven't done all exercise from the book or read all the referenced articles, you should start with these. Otherwise, let's see what else you can do to advance your GraphQL skills.
 
