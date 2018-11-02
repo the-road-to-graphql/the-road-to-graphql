@@ -35,7 +35,7 @@ You can create your own folder and file structure for your components in the *sr
 * constants/
   * routes.js
 * index.js
-* registerServiceWorker.js
+* serviceWorker.js
 * style.css
 
 The folders primarily represent React components. Some components will be reusable UI components such as the Input and Link components, while other components like Repository and Profile components are domain specific for the GitHub client application. Only the top level folders are specified for now, though more can be introduced later if you choose. Moreover, the *constants* folder has only one file to specify the application's routes, which will be introduced later. You may want to navigate from a page that shows repositories of an organization (Organization component) to a page which shows repositories of yourself (Profile component).
