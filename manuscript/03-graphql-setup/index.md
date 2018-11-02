@@ -50,9 +50,7 @@ Once you dive deeper into GitHub's GraphQL API and you start to request nested r
 
 To use GitHub's GraphQL API, you need to generate a personal access token on their website. The access token authorizes users to interact with data, to read and write it under your username. [Follow their step by step instructions](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line) to obtain the personal access token, and be sure to check the necessary scopes (permissions) for it, as you will need them to implement a well-rounded GitHub client later.
 
-{{% pin_it_image "react graphql github](img/posts/getting-started-github-graphql-api/github-personal-access-token.jpg](is-src-set)
-
-![](03-graphql-setup/github-personal-access-token_1024.jpg)
+![](images/github-personal-access-token_1024.jpg)
 
 Later, the personal access token can be used to interact with GitHub's GraphQL API. Be careful not to share these authorizations with any third parties.
 
@@ -62,15 +60,11 @@ There are two common ways to interact with the GitHub GraphQL API without writin
 
 GitHub's GraphQL Explorer knows about your credentials, since you need to sign up using it, but the GraphiQL application needs to know about the personal access token you created. You can add it in your HTTP header for every request in the headers configuration.
 
-{{% pin_it_image "graphiql headers](img/posts/getting-started-github-graphql-api/graphiql-headers.jpg](is-src-set)
-
-![](03-graphql-setup/graphiql-headers_1024.jpg)
+![](images/graphiql-headers_1024.jpg)
 
 In the next step, we add a new header with a name and value to your GraphiQL configuration. To communicate with GitHub's GraphQL API, fill in the header name with "Authorization" and the header value with "bearer [your personal access token]". Save this new header for your GraphiQL application. Finally, you are ready to make requests to GitHub's GraphQL API with your GraphiQL application.
 
-{{% pin_it_image "graphiql authorization](img/posts/getting-started-github-graphql-api/graphiql-authorization.jpg](is-src-set)
-
-![](./graphiql-authorization_1024.jpg)
+![](images/graphiql-authorization_1024.jpg)
 
 If you use your own GraphiQL application, you'll need to provide the GraphQL endpoint for GitHub's GraphQL API: `https://api.github.com/graphql`. For GitHub's GraphQL API, use the [POST HTTP method](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods) for queries and mutations, and to transfer data as a payload to your GraphQL endpoint.
 
