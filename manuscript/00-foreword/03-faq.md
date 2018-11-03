@@ -6,20 +6,20 @@ GraphQL is often used in modern applications to connect client and server applic
 **Why does it use Node/Express to teach about GraphQL?** 
 You can consume third-party GraphQL APIs with a client application, but you can also implement your own GraphQL API on the server-side. Since it is more efficient to stick to one programming language (JavaScript), I picked Node.js. Express.js is the most popular choice for Node.js applications, which si why I picked it over alternatives like Hapi or Koa.
 
-**How to get updates?** 
-I have two channels where I share content updates. You can [subscribe to updates by email](https://www.getrevue.co/profile/rwieruch), or [follow me on Twitter](https://twitter.com/rwieruch). Regardless of the channel, my objective is to share qualitative content, so you will never receive any spam. New versions of each book are available for download as they are updated.
+**How do I get updates?** 
+I have two channels where I share updates about my content. You can [subscribe to updates by email](https://www.getrevue.co/profile/rwieruch) or [follow me on Twitter](https://twitter.com/rwieruch). Regardless of the channel, my objective is to only share quality content. Once you receive notification the book has changed, you can download a new version of it.
 
-**How to get access to the source code projects and screencasts series?** 
-If you bought one of the extended packages that gives you access to the source code projects, screencast series, or any other add-on, you can 0find them on your [course dashboard](https://roadtoreact.com/my-courses). If you bought the course other than on [the official Road to React](https://roadtoreact.com) course platform, you need to create an account there, go to the Admin page, and reach out to me with one of the email templates. Afterward, I can enroll you to the course. If you haven't bought one of the extended packages, you can reach out any time to upgrade, granting access the source code projects and screencast series.
+**How do I gain access to the source code projects?** 
+If you bought the complete course that grants access to the source code projects or any other add-on, you should find these on your [course dashboard](https://roadtoreact.com/my-courses). If you bought the course other than [the official Road to React](https://roadtoreact.com) course platform, create an account on the platform, and then go to the Admin page and contact me with one of the email templates. After that I can unlock the course for you. If you haven't bought the complete course, you can reach out any time to upgrade your content to access the other material.
 
 **How can I get help while reading the book?** 
 The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for people who want to follow along with fellow students and experienced readers. You can join the channel to get help or to help others. You might find that helping others learn progamming helps you internalize your own lessons. If there are no other options, you can always reach out to me.
 
 **Is there any troubleshoot area?** 
-If you run into problems, please join the Slack Group. You can also check the [open issues on GitHub](http://github.com/rwieruch/the-road-to-graphql/issues) for the book. You might find your problem was already mentioned in one of the related channels. If your problem wasn't mentioned, don't hesitate to open a new issue where you can explain your problem, provide a screenshot, and expand on details (e.g. book page, node version). Many of the fixes I apply to future versions of my books are based on issues raised by readers, so you might also help others by bringing attention to concerns.
-
-**What should I do when I cannot afford to pay for the course?** 
-If you cannot afford the course but want to learn about the topic, reach out to me. It could be that you are still a student or that the course would be too expensive in your country. I want to support any cause to improve diversity in the culture of developers. If you belong to a minority, or are in an organization that supports diversity, please reach out to me.
+The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for people who are reading along. You can join the channel to get help, or to help others, as helping others may help you internalize your own understanding. If there is no one available to help you, you can always reach out to me.
+		
+**What if I cannot afford the complete course?** 
+If you cannot afford the complete course but want to learn about the topic, you can reach out to me. It could be that you are still a student, or that the complete course would be too expensive in your country. I want to support any cause to improve diversity in our culture of developers. If you belong to a minority, or are in an organization that supports diversity, please reach out to me.
 
 **Can I help to improve the content?**
 Yes, I would love to hear your feedback. You can open an issue on [GitHub](http://github.com/rwieruch/the-road-to-graphql) and express improvements to the technical aspects or the text content. Many of my publications are translated from my native language to yours, so any help clearing up translations is useful. You can also open pull requests on GitHub for documents or repositories.
@@ -27,11 +27,8 @@ Yes, I would love to hear your feedback. You can open an issue on [GitHub](http:
 **How do I support the project?** 
 If you find my lessons useful and would like to contribute, seek my website's [About Page](https://www.robinwieruch.de/about/) for information about how to offer support. It is also very helpful for my readers spread the word about how my books helped them, so others might discover ways to improve their web development skillsets. Lastly, I have a [Patreon](https://www.patreon.com/rwieruch) available for anyone who would like to become a long-term contributor to my ongoing projects. Contributing through any of the provided channels gives me the freedom to create in-depth courses, and to continue offering free material.
 
-**Is there a money back guarantee?** 
+**Is there a money back guarantee?**     
 Yes, there is 100% money back guarantee for two months if you don't think it's a good fit. Please contact me directly to seek a refund.
 
-**What's your motivation behind the book?**
-I want to teach about web development in a way that is consistent enough for novices and experienced developers to follow. Often, online material is released without updates, or it only covers a limited aspect of a topic. My goal is to provide this consistent and updated learning experience. I also hope to support minorities by providing content for free, or by [giving back in other ways](https://www.robinwieruch.de/giving-back-by-learning-react/). I recently found that I am most fulfilled when teaching others about programming. I consider it a meaningful activity that I prefer over any other 9 to 5 job at any company, so I hope to continue instruction others as long as I am able.
-
-**Is there a call to action?** 
-Yes. Think about anyone who has shown interest in GraphQL, someone currently learning it, or even someone who is unaware it exists, and consider using this book as a good foundation. The book is intended to be shared with others.
+**What's your motivation behind the book?**   
+I want to teach about this topic consistently. I often find materials online that don't receive update, or only applies to a small part of a topic. Sometimes people struggle to find consistent and up-to-date resources to learn from. I want to provide this consistent and up-to-date learning experience. Also, I hope I can support the less fortunate with my projects by giving them the content for free or by [having other impacts](https://www.robinwieruch.de/giving-back-by-learning-react/). Recently, I've found myself fulfilled when teaching others about programming, as it's a meaningful activity I prefer over any 9-to-5 job. I hope to continue this path in the future.
