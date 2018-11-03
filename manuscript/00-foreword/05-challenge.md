@@ -1,4 +1,4 @@
-# Challenge
+## Challenge
 
 I write a lot about lessons I've learned. That's how I got where I am. Since teaching has helped me a lot in my career, I want you to experience the same effects. First, you have to teach yourself. For this book, my challenge is for you to teach others while you are learning. Here are a couple of tips on how to achieve it:
 
