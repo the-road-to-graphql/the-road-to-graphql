@@ -22,7 +22,7 @@ The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/)
 
 **Is there any troubleshoot area?**
 
-The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for people who are reading along. You can join the channel to get help, or to help others, as helping others may help you internalize your own understanding. If there is no one available to help you, you can always reach out to me.
+If you run into problems, please join the Slack Group. Also, check the [open issues on GitHub](https://github.com/the-road-to-graphql/the-road-to-graphql/issues) or in the GitHub repositories of the applications you will build along the way to see if any solutions are listed for specific issue. If your problem wasn't mentioned, open a new issue where you can explain your problem, provide a screenshot, and offer more details (e.g. book page, node version).
 
 **What if I cannot afford the complete course?**
 
@@ -30,11 +30,11 @@ If you cannot afford the complete course but want to learn about the topic, you 
 
 **Can I help to improve the content?**
 
-Yes, I would love to hear your feedback. You can open an issue on [GitHub](http://github.com/rwieruch/the-road-to-graphql) and express improvements to the technical aspects or the text content. Many of my publications are translated from my native language to yours, so any help clearing up translations is useful. You can also open pull requests on GitHub for documents or repositories.
+Yes, I would love to hear your feedback. You can open an issue on [GitHub](http://github.com/rwieruch/the-road-to-graphql) and express improvements to the technical aspects or the text content. You can also open pull requests on GitHub for documents or repositories.
 
 **How do I support the project?**
 
-If you find my lessons useful and would like to contribute, seek my website's [About Page](https://www.robinwieruch.de/about/) for information about how to offer support. It is also very helpful for my readers spread the word about how my books helped them, so others might discover ways to improve their web development skillsets. Lastly, I have a [Patreon](https://www.patreon.com/rwieruch) available for anyone who would like to become a long-term contributor to my ongoing projects. Contributing through any of the provided channels gives me the freedom to create in-depth courses, and to continue offering free material.
+If you find my lessons useful and would like to contribute, seek my website's [About Page](https://www.robinwieruch.de/about/) for information about how to offer support. It is also very helpful for my readers spread the word about how my books helped them, so others might discover ways to improve their web development skillsets. Contributing through any of the provided channels gives me the freedom to create in-depth courses, and to continue offering free material.
 
 **Is there a money back guarantee?**
 

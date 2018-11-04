@@ -4,7 +4,7 @@ Foremost, I want to thank you for reading this book or taking the full course. M
 
 Visit [my website](https://www.robinwieruch.de/) to find more topics about software and web development, and I have updates are available by [subscription](https://www.getrevue.co/profile/rwieruch). The updates will be in-depth content, but never spam.
 
-If you liked the learning experience, I hope you share it with others.  Think about people in your life who want to learn more about this topic. I believe developers need to align on this topic to reach the next level with modern applications.
+If you liked the learning experience, I hope you share it with others. Think about people in your life who want to learn more about this topic. I believe developers need to align on this topic to reach the next level with modern applications.
 
 Thanks for reading,
 Robin.
