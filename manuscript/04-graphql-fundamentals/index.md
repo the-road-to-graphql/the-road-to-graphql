@@ -337,7 +337,14 @@ query {
 }
 ~~~~~~~~
 
-In the results for the query in GraphiQL, you should see the identifier for the repository: `"MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw=="`. Before using the identifier as a variable, you can structure your mutation in GraphiQL the following way:
+In the results for the query in GraphiQL, you should see the identifier for the repository:
+
+{title="Code Playground",lang="json"}
+~~~~~~~~
+MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==
+~~~~~~~~
+
+Before using the identifier as a variable, you can structure your mutation in GraphiQL the following way:
 
 {title="GitHub GraphQL Explorer",lang="json"}
 ~~~~~~~~
