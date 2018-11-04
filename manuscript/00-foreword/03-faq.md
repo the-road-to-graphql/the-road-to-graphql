@@ -16,6 +16,10 @@ I have two channels where I share updates about my content. You can [subscribe t
 
 If you bought the complete course that grants access to the source code projects or any other add-on, you should find these on your [course dashboard](https://roadtoreact.com/my-courses). If you bought the course other than [the official Road to React](https://roadtoreact.com) course platform, create an account on the platform, and then go to the Admin page and contact me with one of the email templates. After that I can unlock the course for you. If you haven't bought the complete course, you can reach out any time to upgrade your content to access the other material.
 
+**Can I get a copy of the book if I bought it on Amazon?**
+
+If you have bought the book on Amazon, you may have seen that the book is available on my website too. Since I use Amazon as one way to monetize my often free content, I honestly thank you for your support and invite you to sign up on [Road to React](https://roadtoreact.com). There you can write me an email (Admin page) about your purchase, so that I can unlock the whole course package for you. In addition, you can always download the latest ebook version of the book on the platform.
+
 **How can I get help while reading the book?**
 
 The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for people who want to follow along with fellow students and experienced readers. You can join the channel to get help or to help others. You might find that helping others learn programming helps you internalize your own lessons. If there are no other options, you can always reach out to me.
