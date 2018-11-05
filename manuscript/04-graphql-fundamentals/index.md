@@ -44,7 +44,14 @@ Congratulations, you have performed your first query to access fields from your 
 }
 ~~~~~~~~
 
-When using GitHub's API, an organization is identified with a `login`. If you have used GitHub before, you might know this is a part of the organization URL: `https://github.com/the-road-to-learn-react`. By providing a `login` to identify the organization, you can request data about it. In this example, you have specified two fields to access data about the organization's `name` and `url`. The request should return something similar to the following output:
+When using GitHub's API, an organization is identified with a `login`. If you have used GitHub before, you might know this is a part of the organization URL:
+
+{title="Code Playground",lang="json"}
+~~~~~~~~
+https://github.com/the-road-to-learn-react
+~~~~~~~~
+
+By providing a `login` to identify the organization, you can request data about it. In this example, you have specified two fields to access data about the organization's `name` and `url`. The request should return something similar to the following output:
 
 {title="GitHub GraphQL Explorer",lang="json"}
 ~~~~~~~~
