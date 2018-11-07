@@ -2,7 +2,7 @@
 
 No one has ever learned programming from reading a book. Programming is about practical experiences, and conquering challenges to strengthen your skills as a developer long-term. Paradigms like functional programming and object-oriented programming require more extensive practice to use practically. Complex concepts like state management in modern web applications and libraries like React and Express will take more than a weekend to master. You will only learn these concepts by practicing them consistently.
 
-I want this book to provide you with more hands on experience and challenges to help you grow as a programmer. The challenges are meant to create a flow experience, a scenario where challenges are met by your skills and tools. If the book manages to keep the balance of challenging you and respecting your skill level, you might experience a [state of flow](https://www.robinwieruch.de/lessons-learned-deep-work-flow/). I found this insight astonishing when I read about myself, so I hope I can induce it in this book.
+I want this book to provide you with more hands on experience and challenges to help you grow as a programmer. The challenges are meant to create a flow experience, a scenario where challenges are met by your skills and tools. If the book manages to keep the balance of challenging you and respecting your skill level, you might experience a [state of flow](https://www.robinwieruch.de/lessons-learned-deep-work-flow/). I found this insight astonishing when I read about it myself, so I hope I can induce it in this book.
 
 ### Tips & Tricks
 
