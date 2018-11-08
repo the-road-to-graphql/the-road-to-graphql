@@ -2,7 +2,7 @@
 
 **Why does the book use React to teach about GraphQL?**
 
-GraphQL is often used in modern applications to connect client and server applications. These applications are often built with solutions such as React, Angular and Vue. To teach about GraphQL, it makes sense to apply it in a real world context like React for your client application. I picked React because it has only a slim API and a good learning curve. It is only the view layer in your tech stack. You can learn about it in [the Road to learn React](https://roadtoreact.com). However, you can apply your learnings about GraphQL in other client-side applications, too.
+GraphQL is often used in modern applications to connect client and server applications. These applications are often built with solutions such as React, Angular and Vue. To teach about GraphQL, it makes sense to apply it in a real world context like React for your client application. I picked React because it has only a slim API and a good learning curve. It is only the view layer in your tech stack. You can learn about it in [The Road to learn React](https://roadtoreact.com). However, you can apply your learnings about GraphQL in other client-side applications, too.
 
 **Why does it use Node/Express to teach about GraphQL?**
 
@@ -26,7 +26,7 @@ The book has a [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/)
 
 **Is there any troubleshoot area?**
 
-If you run into problems, please join the Slack Group. Also, check the [open issues on GitHub](https://github.com/the-road-to-graphql/the-road-to-graphql/issues) or in the GitHub repositories of the applications you will build along the way to see if any solutions are listed for specific issue. If your problem wasn't mentioned, open a new issue where you can explain your problem, provide a screenshot, and offer more details (e.g. book page, node version).
+If you run into problems, please join the Slack Group. Also, check the [open issues on GitHub](https://github.com/the-road-to-graphql/the-road-to-graphql/issues) or in the GitHub repositories of the applications you will build along the way to see if any solutions are listed for a specific issue. If your problem wasn't mentioned, open a new issue where you can explain your problem, provide a screenshot, and offer more details (e.g. book page, node version).
 
 **What if I cannot afford the complete course?**
 
@@ -38,7 +38,7 @@ Yes, I would love to hear your feedback. You can open an issue on [GitHub](http:
 
 **How do I support the project?**
 
-If you find my lessons useful and would like to contribute, seek my website's [About Page](https://www.robinwieruch.de/about/) for information about how to offer support. It is also very helpful for my readers spread the word about how my books helped them, so others might discover ways to improve their web development skillsets. Contributing through any of the provided channels gives me the freedom to create in-depth courses, and to continue offering free material.
+If you find my lessons useful and would like to contribute, seek my website's [About Page](https://www.robinwieruch.de/about/) for information about how to offer support. It is also very helpful for my readers to spread the word about how my books helped them, so others might discover ways to improve their web development skillsets. Contributing through any of the provided channels gives me the freedom to create in-depth courses, and to continue offering free material.
 
 **Is there a money back guarantee?**
 
@@ -46,4 +46,4 @@ Yes, there is 100% money back guarantee for two months if you don't think it's a
 
 **What's your motivation behind the book?**
 
-I want to teach about this topic consistently. I often find materials online that don't receive update, or only applies to a small part of a topic. Sometimes people struggle to find consistent and up-to-date resources to learn from. I want to provide this consistent and up-to-date learning experience. Also, I hope I can support the less fortunate with my projects by giving them the content for free or by [having other impacts](https://www.robinwieruch.de/giving-back-by-learning-react/). Recently, I've found myself fulfilled when teaching others about programming, as it's a meaningful activity I prefer over any 9-to-5 job. I hope to continue this path in the future.
+I want to teach about this topic consistently. I often find materials online that don't receive updates, or only apply to a small part of a topic. Sometimes people struggle to find consistent and up-to-date resources to learn from. I want to provide this consistent and up-to-date learning experience. Also, I hope I can support the less fortunate with my projects by giving them the content for free or by [having other impacts](https://www.robinwieruch.de/giving-back-by-learning-react/). Recently, I've found myself fulfilled when teaching others about programming, as it's a meaningful activity I prefer over any 9-to-5 job. I hope to continue this path in the future.
