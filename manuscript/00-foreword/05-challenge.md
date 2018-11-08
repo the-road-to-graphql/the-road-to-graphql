@@ -6,7 +6,7 @@ I write a lot about lessons I've learned. That's how I got where I am. Since tea
 
 * If you are active on social media, consider sharing some tricks you've learned from this book with your friends. You can tweet hot tips about your latest experiment from the book which may be interesting, or show off your skills in web development Facebook groups. Take quality screenshots of your progress so viewers can follow along.
 
-* If you feel confident recording your learning adventures, share your way through the book on Facebook Live, YouTube Live, or Twitch. You might have many people following your live sessions, but you can always post the recording on YouTube afterward. It is a great way to verbalize problems and their solutions. If parts between recordings are take longer, cut the video or use timelapse to show the highlights. Also, consider keeping bugs and mishaps in the videos, as these can be valuable learning tools for viewers who run into the same issues. These are a few tips for a quality video:
+* If you feel confident recording your learning adventures, share your way through the book on Facebook Live, YouTube Live, or Twitch. You might have many people following your live sessions, but you can always post the recording on YouTube afterward. It is a great way to verbalize problems and their solutions. If parts between recordings are taking longer, cut the video or use timelapse to show the highlights. Also, consider keeping bugs and mishaps in the videos, as these can be valuable learning tools for viewers who run into the same issues. These are a few tips for a quality video:
 
 * Record the audio in your native language. English is preferable, since it will reach the largest audience.
 
