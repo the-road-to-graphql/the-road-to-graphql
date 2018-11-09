@@ -1,6 +1,6 @@
 ## Requirements
 
-To get the most out of this book, you should be familiar with the basics of web development, which includes some knowledge of HTML, CSS and JavaScript. You will also need to be familiar with the term [API](https://www.robinwieruch.de/what-is-an-api-javascript/), because they are discussed frequently. I encourage you to join the official [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for the book, help or get help from others.
+To get the most out of this book, you should be familiar with the basics of web development, which includes some knowledge of HTML, CSS and JavaScript. You will also need to be familiar with the term [API](https://www.robinwieruch.de/what-is-an-api-javascript/), because it is discussed frequently. I encourage you to join the official [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for the book, to help or get help from others.
 
 ### Editor and Terminal
 
@@ -8,7 +8,7 @@ For the development environment, use a running editor or IDE and terminal (comma
 
 ### React
 
-On the client-side, this book uses React to teach about GraphQL in JavaScript. My other book called The Road to learn React teaches you all the fundamentals about React. It also teaches you to make the transition from JavaScript ES5 to JavaScript ES6. The book is available for free and after having read the Road to learn React, you should possess all the knowledge to implement the GraphQL client-side application with this book.
+On the client-side, this book uses React to teach about GraphQL in JavaScript. My other book called The Road to learn React teaches you all the fundamentals about React. It also teaches you to make the transition from JavaScript ES5 to JavaScript ES6. The book is available for free and after having read The Road to learn React, you should possess all the knowledge to implement the GraphQL client-side application with this book.
 
 ### Node
 
@@ -26,4 +26,4 @@ npm --version
 *v6.4.1
 ~~~~~~~~
 
-If you read the Road to learn React, you should be familiar with the setup already, since it introduces the npm ecosystem as well.
+If you read The Road to learn React, you should be familiar with the setup already, since it introduces the npm ecosystem as well.
