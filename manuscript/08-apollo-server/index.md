@@ -2479,8 +2479,9 @@ const server = new ApolloServer({
 
 Next, use it in your `signUp` resolver function by passing it to the token creation. The `sign` method of JWT handles the rest. You can also pass in a third argument for setting an expiration time or date for a token. In this case, the token is only valid for 30 minutes, after which a user has to sign in again.
 
-{{<
- javascript "hl_lines=1 3 5 6 7 19 27" >}}
+
+{title="src/resolvers/user.js",lang="javascript"}
+~~~~~~~~
 import jwt from 'jsonwebtoken';
 
 const createToken = async (user, secret, expiresIn) => {
