@@ -2479,15 +2479,21 @@ const server = new ApolloServer({
 
 Next, use it in your `signUp` resolver function by passing it to the token creation. The `sign` method of JWT handles the rest. You can also pass in a third argument for setting an expiration time or date for a token. In this case, the token is only valid for 30 minutes, after which a user has to sign in again.
 
-{{<
- javascript "hl_lines=1 3 5 6 7 19 27" >}}
+{title="src/resolvers/user.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 import jwt from 'jsonwebtoken';
+# leanpub-end-insert
 
+# leanpub-start-insert
 const createToken = async (user, secret, expiresIn) => {
+# leanpub-end-insert
   const { id, email, username } = user;
+# leanpub-start-insert
   return await jwt.sign({ id, email, username }, secret, {
     expiresIn,
   });
+# leanpub-end-insert
 };
 
 export default {
@@ -2499,7 +2505,9 @@ export default {
     signUp: async (
       parent,
       { username, email, password },
+# leanpub-start-insert
       { models, secret },
+# leanpub-end-insert
     ) => {
       const user = await models.User.create({
         username,
@@ -2507,7 +2515,9 @@ export default {
         password,
       });
 
+# leanpub-start-insert
       return { token: createToken(user, secret, '30m') };
+# leanpub-end-insert
     },
   },
 
