@@ -2,13 +2,13 @@
 
 [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
 
-The official repository for [The Road to GraphQL](https://roadtoreact.com/).
+Official repository for [The Road to GraphQL](https://roadtoreact.com/). If you want to leave a review, please do it on [Amazon](https://www.amazon.com/dp/1730853935) or [Goodreads](https://www.goodreads.com/book/show/42641103-the-road-to-graphql).
 
 ## Updates, Help and Support
 
 * Get book updates via [E-Mail](https://www.getrevue.co/profile/rwieruch) or [Twitter](https://twitter.com/rwieruch)
-* Get help, while learning React with the book or teach others, in the official [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
-* Find out how you can [Support the Book](https://www.robinwieruch.de/about/)
+* Get help, while learning with the book or teach others, in the official [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
+* Find out how you can [support the Book](https://www.robinwieruch.de/about/)
 
 ## Contribute
 
@@ -19,7 +19,3 @@ You can open up any PR that corrects spelling or explains a certain lesson with 
 In addition, you can open Issues when you run into problems. In order to make the fix for the Issue as easy as possible, please provide a couple of details such as error log, screenshot, which page of the book it happened, your node version (command line: `node -v`) and a link to your own repository. Not all of these details are mandatory, but most of them help to fix the Issue and to improve the book.
 
 Thanks a lot for your help!
-
-## Become a Patron
-
-The Road to learn React is a free ebook which should enable everyone to learn about React. This kind of educational content needs your support to sustain itself. Robin Wieruch writes a lot of this educational content on [his website](https://www.robinwieruch.de/) too. So you can support him be being his [Patron on Patreon](https://www.patreon.com/rwieruch).
