@@ -5299,13 +5299,14 @@ Congratulations, your application should be live now. Not only is your GraphQL s
 
 ### Heroku Troubleshoot
 
-It can happen that the GraphQL schema is not available in GraphQL Playground for application in production. It's because the `introspection` flag for Apollo Server is disabled for production. In order to fix it, you can set it to true:
+It can happen that the GraphQL schema is not available in GraphQL Playground for application in production. It's because the `introspection` flag for Apollo Server is disabled. In order to fix it, you can set it to true. Another improvement to add may be the `playground` flag to enable GraphQL Playground for Heroku:
 
 {title="src/index.js",lang="javascript"}
 ~~~~~~~~
 const server = new ApolloServer({
 # leanpub-start-insert
   introspection: true,
+  playground: true,
 # leanpub-end-insert
   typeDefs: schema,
   resolvers,
