@@ -1,32 +1,25 @@
 ## Requirements
 
-To get the most out of this book, you should be familiar with the basics of web development, which includes some knowledge of HTML, CSS and JavaScript. You will also need to be familiar with the term [API](https://www.robinwieruch.de/what-is-an-api-javascript/), because they are discussed frequently. I encourage you to join the official [Slack Group](https://slack-the-road-to-learn-react.wieruch.com/) for the book, help or get help from others.
-
-### React
-
-The Road to learn React teaches you to make the transition from JavaScript ES5 to JavaScript ES6. After having read the Road to learn React, you should possess all the knowledge to read this book. 
+To get the most out of this book, you should be familiar with the basics of web development, which includes knowledge of HTML, CSS and JavaScript. This [article](https://www.robinwieruch.de/how-to-learn-framework/) mentions several things that should be kinda familiar regarding JavaScript before you start to read this book. You will also need to be familiar with the term API, which I explained [here](https://www.robinwieruch.de/what-is-an-api-javascript/), because APIs are used frequently for the applications in this book.
 
 ### Editor and Terminal
 
-For the development environment, use a running editor or IDE and terminal (command line tool), and [follow my setup guide](https://www.robinwieruch.de/developer-setup/). It is adjusted for MacOS users, but you can find a Windows setup guide for React, too. There are lots of articles about setting up a web development environment for your OS.
-
-Optionally, you can also use git and GitHub while conducting the exercises in the book, to keep your projects and the progress in repositories on GitHub. There exists a [little guide](https://www.robinwieruch.de/git-essential-commands/) on how to use these tools. Once again, it is not mandatory for the book, and it can be overwhelming to learn everything from scratch. You can skip it if you are a newcomer to web development, or if you'd just like to focus on the essential parts taught in this book.
+For the development environment, use a terminal/command line tool or an IDE with an integrated terminal. [Follow my setup guide](https://www.robinwieruch.de/developer-setup/) if you're unsure about which tools to use. The guide is set up for MacOS users, but you can find a Windows setup guide there as well.
 
 ### Node and NPM
 
-On the server-side, this book uses Node with Express as library to teach about GraphQL in JavaScript. You don't need to know much about those technologies before using them for your first GraphQL powered applications. The book will guide you through the process of setting up a Node application with Express and shows you how to weave GraphQL into the mix. Afterward, you should be able to consume the GraphQL API provided by your server-side application in your client-side application.
-
-You will need to have [node and npm](https://nodejs.org/en/) installed, which are used to manage the libraries we'll use along the way. In this book, you will install external node packages via npm (node package manager). These node packages can be libraries or whole frameworks. You can verify which node and npm versions you have in the command line. If you don't see output in the terminal, you will need to install node and npm. These are the versions used for this publication:
+[Node and npm](https://nodejs.org/en/) should be installed, as they will run the applications we build and manage their libraries. You will install external node packages via npm (node package manager) during these tutorials, either as libraries or entire frameworks. You can verify which node and npm versions you have in the command line:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
 node --version
 *v10.11.0
 npm --version
-*v6.4.1
+*v6.5.0
 ~~~~~~~~
 
-If you read the Road to learn React, you should be familiar with the setup already, since it introduces the npm ecosystem as well.
+These are the versions used for this publication. If you don't see output in your terminal, you will need to install node and npm. 
 
+### React
 
-
+My other book, The Road to learn React, teaches the fundamentals about React, like how to make the transition from JavaScript ES5 to JavaScript ES6. It is available for free, and after having read it, you should possess all the understanding necessary to work with the applications from this book.
