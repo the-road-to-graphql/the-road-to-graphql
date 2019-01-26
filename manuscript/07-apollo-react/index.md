@@ -3329,7 +3329,7 @@ That's it. Once the button is hovered, it should prefetch the issues for the nex
 ### Exercises:
 
 * Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/87dc6eee7948dad6e1eb4c15078063337eff94db)
-* Read more about [Apollo Prefetching and Query Splitting in React](https://www.apollographql.com/docs/react/features/performance.html)
+* Read more about [Apollo Prefetching and Query Splitting in React](https://www.apollographql.com/docs/react/recipes/performance.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5PLMBR3)
 
 ## Exercise: Commenting Feature
