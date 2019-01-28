@@ -2,7 +2,7 @@
 
 [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
 
-Official repository for [The Road to GraphQL](https://roadtoreact.com/). If you want to leave a review, please do it on [Amazon](https://www.amazon.com/dp/1730853935) or [Goodreads](https://www.goodreads.com/book/show/42641103-the-road-to-graphql).
+Official repository for [The Road to GraphQL](https://roadtoreact.com/course-details?courseId=THE_ROAD_TO_GRAPHQL). If you want to leave a review, please do it on [Amazon](https://www.amazon.com/dp/1730853935) or [Goodreads](https://www.goodreads.com/book/show/42641103-the-road-to-graphql).
 
 ## Updates, Help and Support
 
