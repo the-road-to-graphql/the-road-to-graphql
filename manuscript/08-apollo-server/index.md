@@ -504,7 +504,7 @@ For now, we are going to leave out the `username` resolver, because it only mimi
 (parent, args, context, info) => { ... }
 ~~~~~~~~
 
-The context argument is the third argument in the resolver function used to inject dependencies from the outside to the resolver function. Assume the signed-in user is known to the outside world of your GraphQL layer because a request to your GraphQL server is made and the authenticated user is retrieved from elsewhere. You might decide to inject this signed in user to your resolvers for application functionality, which is done with with the `me` user for the `me` field. Remove the declaration of the `me` user (`let me = ...`) and pass it in the context object when Apollo Server gets initialized instead:
+The context argument is the third argument in the resolver function used to inject dependencies from the outside to the resolver function. Assume the signed-in user is known to the outside world of your GraphQL layer because a request to your GraphQL server is made and the authenticated user is retrieved from elsewhere. You might decide to inject this signed in user to your resolvers for application functionality, which is done with the `me` user for the `me` field. Remove the declaration of the `me` user (`let me = ...`) and pass it in the context object when Apollo Server gets initialized instead:
 
 {title="src/index.js",lang="javascript"}
 ~~~~~~~~
@@ -544,7 +544,7 @@ The context should be the same for all resolvers now. Every resolver that needs 
 
 The fourth argument in a resolver function, the info argument, isn't used very often, because it only gives you internal information about the GraphQL request. It can be used for debugging, error handling, advanced monitoring, and tracking. You don't need to worry about it for now.
 
-A couple of words about the a resolver's return values: a resolver can return arrays, objects and scalar types, but it has to be defined in the matching type definitions. The type definition has to define an array or non-nullable field to have the resolvers working appropriately. What about JavaScript promises? Often, you will make a request to a data source (database, RESTful API) in a resolver, returning a JavaScript promise in the resolver. GraphQL can deal with it, and waits for the promise to resolve. That's why you don't need to worry about asynchronous requests to your data source later.
+A couple of words about the resolver's return values: a resolver can return arrays, objects and scalar types, but it has to be defined in the matching type definitions. The type definition has to define an array or non-nullable field to have the resolvers working appropriately. What about JavaScript promises? Often, you will make a request to a data source (database, RESTful API) in a resolver, returning a JavaScript promise in the resolver. GraphQL can deal with it, and waits for the promise to resolve. That's why you don't need to worry about asynchronous requests to your data source later.
 
 ### Exercises:
 
@@ -857,7 +857,7 @@ This section has shown you how to expose relationships in your GraphQL schema. I
 
 * Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/491d93a90f4ee3413d9226e0a18c10b7407949ef)
 * Query a list of users with their messages
-* Query a list of messages their user
+* Query a list of messages with their user
 * Read more about [the GraphQL schema](https://graphql.github.io/learn/schema/)
 
 ## Apollo Server: Queries and Mutations
