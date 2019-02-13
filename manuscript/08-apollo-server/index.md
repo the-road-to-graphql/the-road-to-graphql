@@ -1554,10 +1554,15 @@ const sequelize = new Sequelize(
 export { sequelize };
 ~~~~~~~~
 
+To access the environment variables inside the server, install and add the `dotenv` package such as `require('dotenv').config()` in your `src/models/index.js`.
+
 In the same file, you can physically associate all your models with each other to expose them to your application as data access layer (models) for the database.
 
 {title="src/models/index.js",lang="javascript"}
 ~~~~~~~~
+# leanpub-start-insert
+require('dotenv').config()
+# leanpub-end-insert
 import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize(
