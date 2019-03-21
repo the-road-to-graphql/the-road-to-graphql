@@ -4,6 +4,12 @@
 
 Official repository for [The Road to GraphQL](https://roadtoreact.com/). If you want to leave a review, please do it on [Amazon](https://www.amazon.com/dp/1730853935) or [Goodreads](https://www.goodreads.com/book/show/42641103-the-road-to-graphql).
 
+## Translations of the book into Github
+
+The Road to GraphQL is also available in other languages. Thanks for all translators for their awesome work!
+
+* 🇨🇳 [Simplified Chinese](https://github.com/the-road-to-graphql/the-road-to-graphql-chinese)
+
 ## Updates, Help and Support
 
 * Get book updates via [E-Mail](https://www.getrevue.co/profile/rwieruch) or [Twitter](https://twitter.com/rwieruch)
