@@ -163,7 +163,8 @@ CORS is needed to perform HTTP requests from another domain than your server dom
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/b6468a84ad77018bf940d951016b7e2c1e07404f)
+* Confirm your [source code for the last section](http://bit.ly/2VsfJJK)
+  * Confirm the [changes from the last section](http://bit.ly/2VnZy09)
 * Read more about [GraphQL](https://graphql.org/learn)
 * Experiment with the schema and the resolver
   * Add more fields to the user type
@@ -371,7 +372,8 @@ You have three queries that can be used in your GraphQL client (e.g. GraphQL Pla
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/469080f810a0049442f02393fae746cebc391cc0)
+* Confirm your [source code for the last section](http://bit.ly/2VnGOxK)
+  * Confirm the [changes from the last section](http://bit.ly/2VnX2Xv)
 * Read more about [the GraphQL schema with Apollo Server](https://www.apollographql.com/docs/apollo-server/v2/essentials/schema.html)
 * Read more about [the GraphQL mindset: Thinking in Graphs](https://graphql.github.io/learn/thinking-in-graphs/)
 * Read more about [nullability in GraphQL](https://blog.apollographql.com/using-nullability-in-graphql-2254f84c4ed7)
@@ -548,7 +550,8 @@ A couple of words about the resolver's return values: a resolver can return arra
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/5d8ebc22260455ac6803af20838cbc1f2636be8f)
+* Confirm your [source code for the last section](http://bit.ly/2Vp9XbR)
+  * Confirm the [changes from the last section](http://bit.ly/2VmdcR7)
 * Read more about [GraphQL resolvers in Apollo](https://www.apollographql.com/docs/apollo-server/v2/essentials/data.html)
 
 ## Apollo Server: Type Relationships
@@ -855,7 +858,8 @@ This section has shown you how to expose relationships in your GraphQL schema. I
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/491d93a90f4ee3413d9226e0a18c10b7407949ef)
+* Confirm your [source code for the last section](http://bit.ly/2VkQrNK)
+  * Confirm the [changes from the last section](http://bit.ly/2VoPrYL)
 * Query a list of users with their messages
 * Query a list of messages with their user
 * Read more about [the GraphQL schema](https://graphql.github.io/learn/schema/)
@@ -1061,7 +1065,8 @@ There is only one GraphQL operation missing for making the messages features com
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/a10c54ec1b82043d98fcff2a6395fcd8e405bfda)
+* Confirm your [source code for the last section](http://bit.ly/2VsfRJe)
+  * Confirm the [changes from the last section](http://bit.ly/2VqAMfA)
 * Create a message in GraphQL Playground with a mutation
   * Query all messages
   * Query the `me` user with messages
@@ -1453,7 +1458,8 @@ You now have a good starting point for a GraphQL server application with Node.js
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/953ef4b2ac8edc7c6338fb73ecdc1446e9cbdc4d)
+* Confirm your [source code for the last section](http://bit.ly/2VnMlnT)
+  * Confirm the [changes from the last section](http://bit.ly/2VkZMF8)
 * Read more about [schema stitching with Apollo Server](https://www.apollographql.com/docs/graphql-tools/schema-stitching.html)
 * Schema stitching is only a part of **schema delegation**
   * Read more about [schema delegation](https://www.apollographql.com/docs/graphql-tools/schema-delegation.html)
@@ -1628,7 +1634,8 @@ We've completed the database setup for a GraphQL server. Next, you'll replace th
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/a1927fc375a62a9d7d8c514f8bf7f576587cca93)
+* Confirm your [source code for the last section](http://bit.ly/2Vv1fJj)
+  * Confirm the [changes from the last section](http://bit.ly/2VmdqHX)
 * Familiarize yourself with databases
   * Try the `psql` command-line interface to access a database
   * Check the Sequelize API by reading through their documentation
@@ -1909,7 +1916,8 @@ In this section, you have used a PostgreSQL database as data source for your Gra
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/27a1372264760879e86be377e069da738270c4f3)
+* Confirm your [source code for the last section](http://bit.ly/2VnMnMx)
+  * Confirm the [changes from the last section](http://bit.ly/2VqMNBJ)
 * Experiment with psql and the seeding of your database
 * Experiment with GraphQL playground and query data which comes from a database now
 * Remove and add the async/await statements in your resolvers and see how they still work
@@ -2143,7 +2151,8 @@ These are the essentials for validation and error handling with GraphQL in Apoll
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/83b2a288ccd65c574ac3f2083c4ceee3197700e7)
+* Confirm your [source code for the last section](http://bit.ly/2VqeomC)
+  * Confirm the [changes from the last section](http://bit.ly/2VqQKqb)
 * Add more validation rules to your database models
   * Read more about validation in the Sequelize documentation
 * Read more about [Error Handling with Apollo Server](https://www.apollographql.com/docs/apollo-server/v2/features/errors.html)
@@ -2664,7 +2673,8 @@ The next section will teach you about authorization in GraphQL on the server-sid
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/831ab566f0b5c5530d9270a49936d102f7fdf73c)
+* Confirm your [source code for the last section](http://bit.ly/2VqNgnB)
+  * Confirm the [changes from the last section](http://bit.ly/2VnPMLj)
 * Register (sign up) a new user with GraphQL Playground
 * Check your users and their hashed passwords in the database with `psql`
 * Read more about [JSON web tokens (JWT)](https://jwt.io/)
@@ -3227,7 +3237,8 @@ If you want to be even more exact than resolver level authorization, check out *
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/4f6e8e6e7b899faca13e1c8354fe59637e7e23a6)
+* Confirm your [source code for the last section](http://bit.ly/2VqxetM)
+  * Confirm the [changes from the last section](http://bit.ly/2VnQc4l)
 * Read more about [GraphQL authorization](https://graphql.github.io/learn/authorization/)
 * Work through the different authorization scenarios with GraphQL Playground
 * Find out more about field level authorization with Apollo Server and GraphQL
@@ -3466,7 +3477,8 @@ It's in a readable format now. You can dive deeper into the date formatting that
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-express-postgresql-boilerplate/tree/709a406a8a94e15779d2e93cfb847d49de5aa6ca)
+* Confirm your [source code for the last section](http://bit.ly/2Vncsva)
+  * Confirm the [changes from the last section](http://bit.ly/2Vtm4os)
 * Read more about [custom scalars in GraphQL](https://www.apollographql.com/docs/apollo-server/features/scalars-enums.html)
 
 ## Pagination in GraphQL with Apollo Server
@@ -4093,7 +4105,8 @@ Hashing the cursor is a common approach for cursor-based pagination because it h
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/810907cde43b460231b9ed3a2172e62528f81ba4)
+* Confirm your [source code for the last section](http://bit.ly/2VoLW4z)
+  * Confirm the [changes from the last section](http://bit.ly/2VkTc1y)
 * Read more about [GraphQL pagination](https://graphql.github.io/learn/pagination/)
 
 ## GraphQL Subscriptions
@@ -4439,7 +4452,8 @@ You have implemented GraphQL subscriptions. It can be a challenge to wrap your h
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/eeb50f34a2569fa85141bf8ec3f8e9baaf670170)
+* Confirm your [source code for the last section](http://bit.ly/2VpaUAX)
+  * Confirm the [changes from the last section](http://bit.ly/2Vq0mRW)
 * Read more about [Subscriptions with Apollo Server](https://www.apollographql.com/docs/apollo-server/v2/features/subscriptions.html)
 * Watch a talk about [GraphQL Subscriptions](http://youtu.be/bn8qsi8jVew)
 
@@ -4813,7 +4827,8 @@ This section only covered E2E tests. With Chai and Mocha at your disposal, you c
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/d11e0487085e014170146ec7479d0154c4a6fce4)
+* Confirm your [source code for the last section](http://bit.ly/2Vri0VI)
+  * Confirm the [changes from the last section](http://bit.ly/2VqCgXc)
 * Implement tests for the message domain similar to the user domain
 * Write more fine-granular unit/integration tests for both domains
 * Read more about [GraphQL and HTTP](https://graphql.github.io/learn/serving-over-http/)
@@ -5162,7 +5177,8 @@ Feel free to add more loaders on your own, maybe for the message domain. The pra
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/9ff0542f620a0d9939c1adcbd21951f8fc1693f4)
+* Confirm your [source code for the last section](http://bit.ly/2VnY1Hr)
+  * Confirm the [changes from the last section](http://bit.ly/2Vo8L8L)
 * Read more about [GraphQL and Dataloader](https://www.apollographql.com/docs/graphql-tools/connectors.html#dataloader)
 * Read more about [GraphQL Best Practices](https://graphql.github.io/learn/best-practices/)
 
@@ -5325,7 +5341,8 @@ In a real world scenario, you would want to use something else to start your app
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/fullstack-apollo-react-express-boilerplate-project/tree/9dbfb30226cdc4843adbcc09d16871b2a902a4d3)
+* Confirm your [source code for the last section](http://bit.ly/2Vnd7Na)
+  * Confirm the [changes from the last section](http://bit.ly/2VkollD)
 * Feedback whether the troubleshooting area for Heroku was useful is very appreciated
 * Create sample data in your production database with GraphQL Playground
 * Get familiar with the [Heroku Dashboard](https://dashboard.heroku.com/apps)

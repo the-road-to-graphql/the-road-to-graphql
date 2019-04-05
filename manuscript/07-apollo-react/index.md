@@ -136,7 +136,8 @@ To initialize Apollo Client, you must specify link and cache properties on the c
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/c7454c9f6b5f7cdf9d65722ccae7ae38f648aef3)
+* Confirm your [source code for the last section](http://bit.ly/2CYjRdg)
+  * Confirm the [changes from the last section](http://bit.ly/2VqgK4W)
 * Read more about [the network layer configuration in Apollo Client](https://www.apollographql.com/docs/react/advanced/network-layer.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5FYZT8T)
 
@@ -180,7 +181,8 @@ Now you have implicit access to the Apollo Client in your React view-layer. It s
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/8377cbc55de3c860df0150d8946e261938a67db5)
+* Confirm your [source code for the last section](http://bit.ly/2CZjMWO)
+  * Confirm the [changes from the last section](http://bit.ly/2VpXNPO)
 * Read more about [configuring and connecting Apollo Client to React](https://www.apollographql.com/docs/react/essentials/get-started.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5FHMHW8)
 
@@ -557,7 +559,8 @@ What you have done in the last steps of this section were pure React implementat
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/44ceb0482442eb07e56d134e6e1da8abefd68afe)
+* Confirm your [source code for the last section](http://bit.ly/2CZbwpU)
+  * Confirm the [changes from the last section](http://bit.ly/2VnYJV7)
 * Read more about [queries with Apollo Client in React](https://www.apollographql.com/docs/react/essentials/queries.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/53Q6K3V)
 
@@ -699,7 +702,8 @@ That's how two or multiple links can be composed for creating an Apollo Client i
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/fa06945db4a933fe4a29c41f46fdc7034bceeb6e)
+* Confirm your [source code for the last section](http://bit.ly/2CWx5aA)
+  * Confirm the [changes from the last section](http://bit.ly/2Vo7n63)
 * Read more about [different Apollo Error types and error policies](https://www.apollographql.com/docs/react/features/error-handling.html)
 * Read more about [Apollo Links](https://www.apollographql.com/docs/link/)
 * Read more about [composable Apollo Links](https://www.apollographql.com/docs/link/composition.html)
@@ -929,7 +933,8 @@ When you star a repository as above, the "Star" button disappears. This is what 
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/feb2b794392f9c5b1d2566ed39ad4ca5f650f194)
+* Confirm your [source code for the last section](http://bit.ly/2CYyXiN)
+  * Confirm the [changes from the last section](http://bit.ly/2Vpdg2L)
 * Read more about [mutations with Apollo Client in React](https://www.apollographql.com/docs/react/essentials/mutations.html)
 * Implement other mutations in the RepositoryItem component
   * Implement the `removeStar` mutation when the `viewerHasStarred` boolean is true
@@ -993,7 +998,8 @@ I find the HOC approach cleaner than the render props, because it co-locates bot
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/694cc4ec8f0d3546c13e0a32cd1f18ba9a990713)
+* Confirm your [source code for the last section](http://bit.ly/2VkX3LU)
+  * Confirm the [changes from the last section](http://bit.ly/2Vpdjvt)
 * Come up with your own opinion about the advantages and disadvantages of using a Higher-Order Component or Render Prop
 * Try to implement one of your mutations with a Higher-Order Component
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5G6QPLY)
@@ -1226,7 +1232,8 @@ On an implementation level, you learned about extracting fragments from a query 
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/24bb647ac94f1af1c52b61e41cebba6a6fd95f4f)
+* Confirm your [source code for the last section](http://bit.ly/2VoiWKr)
+  * Confirm the [changes from the last section](http://bit.ly/2Vp8D8V)
 * Read more about [Local State Management in Apollo Client](https://www.apollographql.com/docs/react/essentials/local-state.html)
 * Read more about [Fragments in Apollo Client](https://www.apollographql.com/docs/react/advanced/fragments.html)
 * Implement local cache updates for all the other mutations from the previous exercises
@@ -1426,7 +1433,8 @@ The first three are about **inserting** a data-layer into the view-layer, while 
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/2fd3f5bad7668655feebe876db7bc9247905c475)
+* Confirm your [source code for the last section](http://bit.ly/2VuZZpz)
+  * Confirm the [changes from the last section](http://bit.ly/2VrjEGS)
 * Throttle your internet connection (often browsers offers such functionality) and experience how the `optimisticResponse` takes the `update` function into account even though the request is slow
 * Try different ways of co-locating or inserting your data-layer with render props and higher-order components
 * Implement the optimistic UIs for the star and unstar mutations
@@ -1876,7 +1884,8 @@ That's it for the abstraction of the FetchMore button for paginated lists with A
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/65cb143d605b1c7e9c080f36b5f64805f02aba29)
+* Confirm your [source code for the last section](http://bit.ly/2VnG7EE)
+  * Confirm the [changes from the last section](http://bit.ly/2VqPWSb)
 * Read more about [pagination with Apollo Client in React](https://www.apollographql.com/docs/react/features/pagination.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5HYMGN7)
 
@@ -2566,7 +2575,8 @@ You have implemented a dynamic GraphQL query with a search field. Once a new `or
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/3ab9c752ec0ec8c3e5f7a1ead4519ea3a626785b)
+* Confirm your [source code for the last section](http://bit.ly/2VojIXR)
+  * Confirm the [changes from the last section](http://bit.ly/2VkYSse)
 * If you are not familiar with React Router, try it out in [this pragmatic tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5HFQ3TD)
 
@@ -2785,7 +2795,8 @@ Once you start your application again, you should see the initial page of pagina
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/6781b487d6799e55a4deea48dfe706253b373f0a)
+* Confirm your [source code for the last section](http://bit.ly/2VseREY)
+  * Confirm the [changes from the last section](http://bit.ly/2VqLeUn)
 * Read more about [the rate limit when using a (or in this case GitHub's) GraphQL API](https://developer.github.com/v4/guides/resource-limitations/)
 
 ## Implementing the Issues Feature: Client-Side Filter
@@ -2984,7 +2995,8 @@ You have implemented client-side filtering. The button is used to toggle between
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/0f261b13696046832ad65f1909266957d6275d6c)
+* Confirm your [source code for the last section](http://bit.ly/2VsfwpW)
+  * Confirm the [changes from the last section](http://bit.ly/2Vtl4Re)
 * Install the [recompose](https://github.com/acdlite/recompose) library which implements many higher-order components
 * Refactor the Issues component from class component to functional stateless component
 * Use the `withState` HOC for the Issues component to manage the `issueState`
@@ -3131,7 +3143,8 @@ You are only querying open or closed issues. Your query became more exact, and t
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/df737276a4bc8d2d889d182937b77ba9e474e70c)
+* Confirm your [source code for the last section](http://bit.ly/2VkQ064)
+  * Confirm the [changes from the last section](http://bit.ly/2VnWyAF)
 * Implement the pagination feature for the Issue feature
   * Add the pageInfo information to the query
   * Add the additional cursor variable and argument to the query
@@ -3328,7 +3341,8 @@ That's it. Once the button is hovered, it should prefetch the issues for the nex
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-apollo/tree/87dc6eee7948dad6e1eb4c15078063337eff94db)
+* Confirm your [source code for the last section](http://bit.ly/2Vma9IF)
+  * Confirm the [changes from the last section](http://bit.ly/2VqhIy6)
 * Read more about [Apollo Prefetching and Query Splitting in React](https://www.apollographql.com/docs/react/recipes/performance.html)
 * Invest 3 minutes of your time and take the [quiz](https://www.surveymonkey.com/r/5PLMBR3)
 

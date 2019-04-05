@@ -236,7 +236,8 @@ You might wonder why there is only one input field to grab the information about
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-vanilla/tree/ca7b278b8f602c46dfac64a1304d39a8e8e0006b)
+* Confirm your [source code for the last section](http://bit.ly/2D0TMKz)
+  * Confirm the [changes from the last section](http://bit.ly/2Vo6VVp)
 * If you are unfamiliar with React, check out *The Road to learn React*
 
 ## GraphQL Query in React
@@ -852,7 +853,8 @@ Finally, the query takes variables into account without detouring into a functio
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-vanilla/tree/c08126a9ec91dde4198ae85bb2f194fa7767c683)
+* Confirm your [source code for the last section](http://bit.ly/2D1j5fu)
+  * Confirm the [changes from the last section](http://bit.ly/2VpWnVu)
 * Explore and add fields to your organization, repository and issues
   * Extend your components to display the additional information
 * Read more about [serving a GraphQL API over HTTP](http://graphql.org/learn/serving-over-http/)
@@ -1239,7 +1241,8 @@ Now you've implemented pagination with GraphQL in React. For practice, try more 
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-vanilla/tree/060677346e8955fb1a6c7579859ce92e62e1f406)
+* Confirm your [source code for the last section](http://bit.ly/2CWw7es)
+  * Confirm the [changes from the last section](http://bit.ly/2VnYgSR)
 * Explore further arguments, generic or specific for the type, on the `issues` and `reactions` list fields
   * Think about ways to beautify the updating mechanism of deeply nested state objects and [contribute your thoughts to it](https://github.com/rwieruch/react-graphql-github-apollo/pull/14)
 
@@ -1591,7 +1594,8 @@ You have implemented your first mutation in React with GraphQL. So far, you have
 
 ### Exercises:
 
-* Confirm your [source code for the last section](https://github.com/the-road-to-graphql/react-graphql-github-vanilla/tree/3dcd95e32ef24d9e716a1e8ac144b62c0f41ca3c)
+* Confirm your [source code for the last section](http://bit.ly/2D01swJ)
+  * Confirm the [changes from the last section](http://bit.ly/2Vpcy5B)
 * Implement the `removeStar` mutation, which is used analog to the `addStar` mutation.
   * The `onStarRepository` class method has already access to the `viewerHasStarred` property.
   * Conditionally execute a `addStar` or `removeStar` mutation in the class handler.
