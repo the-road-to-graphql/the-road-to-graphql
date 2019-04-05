@@ -1560,6 +1560,8 @@ const sequelize = new Sequelize(
 export { sequelize };
 ~~~~~~~~
 
+*Note: To access the environment variables in your source code, install and add the [dotenv package](https://github.com/motdotla/dotenv) as described in this [setup tutorial](https://www.robinwieruch.de/minimal-node-js-babel-setup/).*
+
 In the same file, you can physically associate all your models with each other to expose them to your application as data access layer (models) for the database.
 
 {title="src/models/index.js",lang="javascript"}
