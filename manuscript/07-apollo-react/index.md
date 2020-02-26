@@ -61,28 +61,28 @@ In this section, you will set up an Apollo Client instance like we did previousl
 The Apollo Client setup can be completed in the top-level *src/index.js* file, where the React to HTML entry point exists as well. First, install the Apollo Client in your project folder using the command line:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install apollo-client --save
-~~~~~~~~
+~~~~~~~
 
 Two utility packages are required for two mandatory configurations used to create the Apollo Client. The [apollo-cache-inmemory](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-cache-inmemory) is a recommended cache (read also as: store or state) for your Apollo Client to manage the data, while apollo-link-http is used to configure the URI and additional network information once for an Apollo Client instance.
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install apollo-cache-inmemory apollo-link-http --save
-~~~~~~~~
+~~~~~~~
 
 As you can see, nothing has been mentioned about React, only the Apollo Client plus two packages for its configuration. There are two additional packages required for Apollo Client to work with GraphQL, to be used as internal dependencies by Apollo. The latter is also used to define queries and mutations. Previously, these utilities came directly from Apollo Boost.
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install graphql graphql-tag --save
-~~~~~~~~
+~~~~~~~
 
 That's it for package installation, so now we enter the Apollo Client setup and configuration. In your top level *src/index.js* file, where all the Apollo Client setup will be done in this section, import the necessary classes for the Apollo Client setup from the previously installed packages.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
 # leanpub-start-insert
@@ -95,12 +95,12 @@ import './style.css';
 import App from './App';
 
 ...
-~~~~~~~~
+~~~~~~~
 
 The `ApolloClient` class is used to create the client instance, and the `HttpLink` and `InMemoryCache` are used for its mandatory configurations. First, you can create a configured `HttpLink` instance, which will be fed to the Apollo Client creation.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GITHUB_BASE_URL = 'https://api.github.com/graphql';
 
 const httpLink = new HttpLink({
@@ -111,26 +111,26 @@ const httpLink = new HttpLink({
     }`,
   },
 });
-~~~~~~~~
+~~~~~~~
 
 You may recall the mandatory configuration from previous applications. The `uri` is a mandatory value to define the only GraphQL API endpoint used by the Apollo Client. In this case, Github's GraphQL endpoint is passed as value. When consuming the GitHub GraphQL API, you have to authorize yourself with your personal access token. You should have already created the token in a previous section, which you can now define in a *.env* file in your project folder. Afterward, it should be accessible with `process.env`. Keep in mind that you have to use the `REACT_APP` prefix when using create-react-app, because that's how it is required by create-react-app. Otherwise, you would be free to choose your own naming for it.
 
 Second, create the cache as the place where the data is managed in Apollo Client. The cache normalizes your data, caches requests to avoid duplicates, and makes it possible to read and write data to the cache. You will use it multiple times while developing this application. The cache instantiation is straightforward, as it doesn't require you to pass any arguments to it. Check the API to explore further configurations.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const cache = new InMemoryCache();
-~~~~~~~~
+~~~~~~~
 
 Finally, you can use both instantiated configurations, the link and the cache, to create the instance of the Apollo Client in the *src/index.js* file.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const client = new ApolloClient({
   link: httpLink,
   cache,
 });
-~~~~~~~~
+~~~~~~~
 
 To initialize Apollo Client, you must specify link and cache properties on the config object. Once you start your application again, there should be no errors. If there are any, check whether you have implemented a basic App component in your *src/App/index.js* file because the ReactDOM API needs to hook this component into the HTML.
 
@@ -146,14 +146,14 @@ To initialize Apollo Client, you must specify link and cache properties on the c
 All we've done thus far has been the framework agnostic part of Apollo Client. However, without connecting React to it, you'd have a hard time making effective use of GraphQL. That's why there is an official library to connect both worlds: [react-apollo](https://github.com/apollographql/react-apollo). The great thing about those connecting libraries is that there are solutions for other view-layer solutions like Angular and Vue, too, so you can use the Apollo Client in a framework agnostic way. In the following, it needs two steps to connect the Apollo Client with React. First, install the library in the command line in your project folder:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install react-apollo --save
-~~~~~~~~
+~~~~~~~
 
 Second, import its ApolloProvider component, and use it as a composing component around your App component in the *src/index.js* file. Under the hood, it uses [React's Context API](https://www.robinwieruch.de/react-context-api/) to pass the Apollo Client through your application.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
 # leanpub-start-insert
@@ -175,7 +175,7 @@ ReactDOM.render(
 # leanpub-end-insert
   document.getElementById('root')
 );
-~~~~~~~~
+~~~~~~~
 
 Now you have implicit access to the Apollo Client in your React view-layer. It says implicit because most often you will not use the client explicitly. You will see in the next section what this means.
 
@@ -191,7 +191,7 @@ Now you have implicit access to the Apollo Client in your React view-layer. It s
 In this section, you will implement your first GraphQL query using Apollo Client in React. You've seen how different entities, such as the current user (viewer) or repositories, can be queried from GitHub's GraphQL API. This time you will do it in React. A Profile component might be the best place to render the current user and its associated repositories. Start by using the not-yet-implemented Profile component in your App component in the *src/App/index.js* file, which we'll take care of next. It makes sense to extract the Profile component now, because the App component will be the static frame around the application later. Components like Navigation and Footer are static, and components such as Profile and Organization are dynamically rendered based on routing (URLs).
 
 {title="src/App/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Component } from 'react';
 
 # leanpub-start-insert
@@ -207,26 +207,26 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 In your *src/Profile/index.js* file, add a simple functional stateless component. In the next step you will extend it with a GraphQL query.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 const Profile = () =>
   <div>Profile</div>
 
 export default Profile;
-~~~~~~~~
+~~~~~~~
 
 Now we'll learn to query data with GraphQL and Apollo Client. The Apollo Client was provided in a previous section with React's Context API in a top level component. You have implicit access to it, but never use it directly for standard queries and mutations. It says "standard" here, because there will be situations where you use the Apollo Client instance directly while implementing this application.
 
 The React Apollo package grants access to a Query component, which takes a query as prop and executes it when its rendered. That's the important part: it executes the query when it is rendered. It uses React's [render props](https://www.robinwieruch.de/react-render-props-pattern/) pattern, using a child as a function implementation where you can access the result of the query as an argument.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import { Query } from 'react-apollo';
@@ -241,12 +241,12 @@ const Profile = () => (
 );
 
 export default Profile;
-~~~~~~~~
+~~~~~~~
 
 This is a function that returns only JSX, but you have access to additional information in the function arguments. First, define the GraphQL query to request your authorizations. You can use a previously installed utility package to define the query.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import gql from 'graphql-tag';
@@ -273,12 +273,12 @@ const Profile = () => (
 );
 
 export default Profile;
-~~~~~~~~
+~~~~~~~
 
 Use the children as a function pattern to retrieve the query result as a data object, and render the information in your JSX.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
@@ -309,12 +309,12 @@ const Profile = () => (
 );
 
 export default Profile;
-~~~~~~~~
+~~~~~~~
 
 Make sure to give some type of visual feedback until your view-layer can be rendered with actual data:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query query={GET_CURRENT_USER}>
     {({ data }) => {
@@ -334,14 +334,14 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 That's how you define a GraphQL query in a declarative way in React. Once the Query component renders, the request is executed. The Apollo Client is used, provided in a top level component, to perform the query. The render props pattern makes it possible to access the result of the query in the child function. You can try it in your browser to verify that it actually works for you.
 
 There is more information found in the render prop function. Check the official React Apollo API for additional information beyond the examples in this application. Next, let's show a loading indicator when a query is pending:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query query={GET_CURRENT_USER}>
 # leanpub-start-insert
@@ -363,24 +363,24 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 The application now shows a loading indicator when there is no `viewer` object or the `loading` boolean is set to true. As you can assume that the request will be pending when there is no `viewer`, you can show the loading indicator from the beginning. At this point, it's best to extract the loading indicator as its own component because you will have to reuse it later for other queries. You created a Loading folder for it before, which will house the *src/Loading/index.js* file. Then, use it in your Profile component.
 
 {title="src/Loading/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 const Loading = () =>
   <div>Loading ...</div>
 
 export default Loading;
-~~~~~~~~
+~~~~~~~
 
 Next, extend the query with a nested list field for querying your own GitHub repositories. You have done it a few times before, so the query structure shouldn't be any different now. The following query requests a lot of information you will use in this application:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const GET_REPOSITORIES_OF_CURRENT_USER = gql`
 # leanpub-end-insert
@@ -419,12 +419,12 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Use this extended and renamed query in your Query component to request additional information about repositories. Pass these repositories from the query result to a new RepositoryList component which should do all the rendering for you. It's not the responsibility of the Profile component, and you may want to render a list of repositories somewhere else.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -449,21 +449,21 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 In your *src/Repository/index.js* file, create your first import/export statements for the RepositoryList component from a dedicated file in this folder. The *index.js* file is used as your entry point to this Repository module. Everything used from this module should be accessible by importing it from this *index.js* file.
 
 {title="src/Repository/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import RepositoryList from './RepositoryList';
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 Next, define the RepositoryList component in your *src/Repository/RepositoryList/index.js* file. The component only takes the array of repositories as props, which will be retrieved by the GraphQL query to render a list of RepositoryItem components. The identifier of each repository can be passed as key attribute to the rendered list. Otherwise, all props from one repository node are passed to the RepositoryItem using the JavaScript spread operator.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import RepositoryItem from '../RepositoryItem';
@@ -478,12 +478,12 @@ const RepositoryList = ({ repositories }) =>
   ));
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 Finally, define the RepositoryItem component in the *src/Repository/RepositoryItem/index.js* file to render all the queried information about each repository. The file already uses a couple of stylings which you may have defined in a CSS file as suggested before. Otherwise, the component renders only static information for now.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import Link from '../../Link';
@@ -536,12 +536,12 @@ const RepositoryItem = ({
 );
 
 export default RepositoryItem;
-~~~~~~~~
+~~~~~~~
 
 The anchor element to link to the repository is already extracted as a Link component. The Link component in the *src/Link/index.js* file could look like the following, to make it possible to open those URLs in an extra browser tab:
 
 {title="src/Link/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 const Link = ({ children, ...props }) => (
@@ -551,7 +551,7 @@ const Link = ({ children, ...props }) => (
 );
 
 export default Link;
-~~~~~~~~
+~~~~~~~
 
 Once you restart your application, you should see a styled list of repositories with a name, URL, description, star count, owner, and the project's implementation language. If you can't see any repositories, check to see if your GitHub account has any public repositories. If it doesn't, then it's normal that nothing showed up. I recommend you make yourself comfortable with GitHub by creating a couple of repositories, both for the sake of learning about GitHub and to use this data to practice with this tutorial. Another way to create repositories for your own account is forking repositories from other people.
 
@@ -569,7 +569,7 @@ What you have done in the last steps of this section were pure React implementat
 Before diving into GraphQL mutations in React with Apollo Client, this section should clarify error handling with Apollo in React. The error handling happens on two levels: the application level and the query/mutation level. Both can be implemented with the two cases that follow. On a query level, in your Profile component, you have access to the query `data` and `loading` properties. Apart from these, you can also access the `error` object, which can be used to show a conditional error message.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 import RepositoryList from '../Repository';
@@ -601,12 +601,12 @@ const Profile = () => (
 );
 
 export default Profile;
-~~~~~~~~
+~~~~~~~
 
 Whereas the ErrorMessage component from the *src/Error/index.js* could look like the following:
 
 {title="src/Error/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -618,19 +618,19 @@ const ErrorMessage = ({ error }) => (
 );
 
 export default ErrorMessage;
-~~~~~~~~
+~~~~~~~
 
 Try to change the name of a field in your query to something not offered by GitHub's GraphQL API, and observe what's rendered in the browser. You should see something like this: *Error: GraphQL error: Field 'viewers' doesn't exist on type 'Query'*. Or, if you simulate offline functionality, you'll see: *Error: Network error: Failed to fetch*. That's how errors can be separated into GraphQL errors and network errors. You can handle errors on a component or query level, but it will also help with mutations later. To implement error handling on an application level, install another Apollo package:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install apollo-link-error --save
-~~~~~~~~
+~~~~~~~
 
 You can import it in your *src/index.js* file and create such an error link:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
@@ -654,21 +654,21 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 You could differentiate the error handling at the application level into development and production mode. During development, it might be sufficient to console log the errors to a developer console in the browser. In production mode, you can setup an error tracking service like [Sentry](https://sentry.io). It will teach you to identify bugs in a web dashboard more efficiently.
 
 Now you have two links in your application: `httpLink` and `errorLink`. To combine them for use with the Apollo Client instance, we'll download yet another useful package in the Apollo ecosystem that makes link compositions possible in the command line:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install apollo-link --save
-~~~~~~~~
+~~~~~~~
 
 And second, use it to combine your two links in the *src/index.js* file:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 import { ApolloClient } from 'apollo-client';
 # leanpub-start-insert
@@ -696,7 +696,7 @@ const client = new ApolloClient({
 # leanpub-end-insert
   cache,
 });
-~~~~~~~~
+~~~~~~~
 
 That's how two or multiple links can be composed for creating an Apollo Client instance. There are several links developed by the community and Apollo maintainers that extend the Apollo Client with advanced functionality. Remember, it's important to understand that links can be used to access and modify the GraphQL control flow. When doing so, be careful to chain the control flow in the correct order. The `apollo-link-http` is called a **terminating link** because it turns an operation into a result that usually occurs from a network request. On the other side, the `apollo-link-error` is a **non-terminating link**. It only enhances your terminating link with features, since a terminating link has to be the last entity in the control flow chain.
 
@@ -717,7 +717,7 @@ The previous sections have taught you how to query data with React Apollo and th
 The mutation starts out with a variable to identify the repository to be starred. We haven't used a variable in Query component yet, but the following mutation works the same way, which can be defined in the *src/Repository/RepositoryItem/index.js* file.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import gql from 'graphql-tag';
@@ -739,12 +739,12 @@ const STAR_REPOSITORY = gql`
 # leanpub-end-insert
 
 ...
-~~~~~~~~
+~~~~~~~
 
 The mutation definition takes the `id` variable as input for the `addStar` mutation. As before, you can decide what should be returned in case of a successful mutation. Now, you can use a Mutation component that represents the previously used Query component, but this time for mutations. You have to pass the mutation prop, but also a variable prop for passing the identifier for the repository.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import gql from 'graphql-tag';
 # leanpub-start-insert
@@ -787,14 +787,14 @@ const RepositoryItem = ({
     </div>
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 Note: The div element surrounding the Mutation component is there for other mutations you will implement in this section.
 
 The `id` for each repository should be available due to previous query result. It has to be used as a variable for the mutation to identify the repository. The Mutation component is used like the Query component, because it implements the render prop pattern as well. The first argument is different, though, as it is the mutation itself instead of the mutation result. Use this function to trigger the mutation before expecting a result. Later, you will see how to retrieve the mutation result; for now, the mutating function can be used in a button element. In this case, it is already in a Button component:
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 import Link from '../../Link';
@@ -828,12 +828,12 @@ const RepositoryItem = ({ ... }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 The styled Button component could be implemented in the *src/Button/index.js* file. It's already extracted, because you will use it in this application later.
 
 {title="src/Button/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -855,12 +855,12 @@ const Button = ({
 );
 
 export default Button;
-~~~~~~~~
+~~~~~~~
 
 Let's get to the mutation result which was left out before. Access it as a second argument in your child function of the render prop.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const RepositoryItem = ({ ... }) => (
   <div>
     <div className="RepositoryItem-title">
@@ -885,14 +885,14 @@ const RepositoryItem = ({ ... }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 A mutation works like a query when using React Apollo. It uses the render prop pattern to access the mutation and the result of the mutation. The mutation can be used as a function in the UI. It has access to the variables that are passed in the Mutation component, but it can also override the variables when you pass them in a configuration object to the function (e.g. `addStar({ variables: { id } })`). That's a general pattern in React Apollo: You can specify information like variables in the Mutation component, or when you call the mutating function to override it.
 
 Note that if you use the `viewerHasStarred` boolean from the query result to show either a "Star" or "Unstar" button, you can do it with a conditional rendering:
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const RepositoryItem = ({ ... }) => (
   <div>
     <div className="RepositoryItem-title">
@@ -927,7 +927,7 @@ const RepositoryItem = ({ ... }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 When you star a repository as above, the "Star" button disappears. This is what we want, because it means the `viewerHasStarred` boolean has been updated in Apollo Client's cache for the identified repository. Apollo Client was able to match the mutation result with the repository identifier to the repository entity in Apollo Client's cache, the props were updated, and the UI re-rendered. Yet, on the other side, the count of stargazers who have starred the repository isn't updated because it cannot be retrieved from GitHub's API. The count must be updated in the Apollo Client's cache. You will find out more about this topic in one of the following sections.
 
@@ -949,7 +949,7 @@ We've done Query and Mutation components from React Apollo to connect a data-lay
 [Higher-Order Components (HOC)](https://www.robinwieruch.de/gentle-introduction-higher-order-components/) is a widely accepted alternative to React's render prop pattern. The React Apollo package implements a Higher-Order Component for queries and mutations as well, though the team behind Apollo doesn't advertise it, and even spoke in favor of render props as their first choice. Nonetheless, this section shows you the alternative, using a Higher-Order Component instead of a Render Prop, though this application will continue to use the render prop pattern afterward. If you already have access to the query result in the Profile component's arguments, there is no Query component needed in the component itself:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = ({ data, loading, error }) => {
   if (error) {
     return <ErrorMessage error={error} />;
@@ -963,12 +963,12 @@ const Profile = ({ data, loading, error }) => {
 
   return <RepositoryList repositories={viewer.repositories} />;
 };
-~~~~~~~~
+~~~~~~~
 
 There is no GraphQL involved here, because all you see is the pure view-layer. Instead, the data-layer logic is extracted into a Higher-Order Component. We import the `graphql` HOC from the React Apollo package in order to apply it on the Profile component, which takes the query definition as argument.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import gql from 'graphql-tag';
 # leanpub-start-insert
@@ -992,7 +992,7 @@ const Profile = ({ data, loading, error }) => {
 # leanpub-start-insert
 export default graphql(GET_REPOSITORIES_OF_CURRENT_USER)(Profile);
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 I find the HOC approach cleaner than the render props, because it co-locates both the data-layer and view-layer instead of inserting the one into the other. However, the team behind Apollo made the decision to favor render props instead. While I find the HOC approach more concise, the render prop pattern comes with its own advantages for mutating and querying data. For instance, imagine a query depends on a prop used as variable. It would be cumbersome to access the incoming prop in a statically-defined Higher-Order Component, but it can be dynamically used in a render prop because it is used within the Profile component where the props are naturally accessible. Another advantage is the power of composition for render props, which is useful when one query depends on the result of another. It can be achieved with HOCs as well, but again, it is more cumbersome. It boils down to seemingly never ending "Higher-Order Components vs Render Props" discussions.
 
@@ -1013,7 +1013,7 @@ Apollo Client doesn't update the count of stars after the mutation, though. Norm
 Before implementing the update functionality for the local state management, let's refactor another piece of code that will be useful for a local state update mechanism. The query definition next to your Profile component has grown to several fields with multiple object nestings. Previously, you learned about GraphQL fragments, and how they can be used to split parts of a query to reuse later. Next, we will split all the field information you used for the repository's node. You can define this fragment in the *src/Repository/fragments.js* file to keep it reusable for other components.
 
 {title="src/Repository/fragments.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import gql from 'graphql-tag';
 
 const REPOSITORY_FRAGMENT = gql`
@@ -1041,14 +1041,14 @@ const REPOSITORY_FRAGMENT = gql`
 `;
 
 export default REPOSITORY_FRAGMENT;
-~~~~~~~~
+~~~~~~~
 
 You split this partial query (fragment), because it is used more often in this application in the next sections for a local state update mechanism, hence the previous refactoring.
 
 The fragment shouldn't be imported directly from the *src/Repository/fragments.js* path to your Profile component, because the *src/Repository/index.js* file is the preferred entry point to this module.
 
 {title="src/Repository/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import RepositoryList from './RepositoryList';
 # leanpub-start-insert
 import REPOSITORY_FRAGMENT from './fragments';
@@ -1059,12 +1059,12 @@ export { REPOSITORY_FRAGMENT };
 # leanpub-end-insert
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 Finally, import the fragment in the Profile component's file to use it again.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -1097,12 +1097,12 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
 `;
 
 ...
-~~~~~~~~
+~~~~~~~
 
 The refactoring is done. Your query is now more concise, and the fragment in its natural repository module can be reused for other places and functionalities. Next, use Mutation component's `update` prop to pass a function which will update the local cache eventually.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -1138,12 +1138,12 @@ const RepositoryItem = ({ ... }) => (
 );
 
 export default RepositoryItem;
-~~~~~~~~
+~~~~~~~
 
 The function is extracted as its own JavaScript variable, otherwise ends up too verbose in the RepositoryItem component when keeping it inlined in the Mutation component. The function has access to the Apollo Client and the mutation result in its argument, and you need both to update data so you can destructure the mutation result in the function signature. If you don't know how the mutation result looks like, check the `STAR_REPOSITORY` mutation definition again, where you defined all fields that should appear in the mutation result. For now, the `id` of the repository to be updated is the important part.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const updateAddStar = (
 # leanpub-start-insert
   client,
@@ -1152,14 +1152,14 @@ const updateAddStar = (
 ) => {
   ...
 };
-~~~~~~~~
+~~~~~~~
 
 You could have passed the `id` of the repository to the `updateAddStar()` function, which was a higher-order function in the Mutation component's render prop child function. You already have access to the repository's identifier in the Repository component.
 
 Now comes the most exciting part of this section. You can use the Apollo Client to read data from the cache, but also to write data to it. The goal is to read the starred repository from the cache, which is why we need the `id` to increment its stargazers count by one and write the updated repository back to the cache. You got the repository by its `id` from the cache by extracting the repository fragment. You can use it along with the repository identifier to retrieve the actual repository from Apollo Client's cache without querying all the data with a naive query implementation.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -1185,7 +1185,7 @@ const updateAddStar = (
 
   // write repository back to cache
 };
-~~~~~~~~
+~~~~~~~
 
 The Apollo Client's cache that you set up to initialize the Apollo Client normalizes and stores queried data. Otherwise, the repository would be a deeply nested entity in a list of repositories for the query structure used in the Profile component. Normalization of a data structure makes it possible to retrieve entities by their identifier and their GraphQL `__typename` meta field. The combination of both is the default key, which is called a [composite key](https://en.wikipedia.org/wiki/Compound_key), to read or write an entity from or to the cache. You may find out more about changing this default composite key in the exercises of this section.
 
@@ -1194,7 +1194,7 @@ Furthermore, the resulting entity has all properties specified in the fragment. 
 After you have retrieved the repository entity with a fragment and its composite key, you can update the count of stargazers and write back the data to your cache. In this case, increment the number of stargazers.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const updateAddStar = (
   client,
   { data: { addStar: { starrable: { id } } } },
@@ -1222,7 +1222,7 @@ const updateAddStar = (
   });
 # leanpub-end-insert
 };
-~~~~~~~~
+~~~~~~~
 
 Let's recap all three steps here. First, you have retrieved (read) the repository entity from the Apollo Client using an identifier and the fragment; second, you updated the information of the entity; and third, you wrote back the data with updated information, but kept all remaining information intact using the JavaScript spread operator. This is a manual update mechanism that can be used when a mutation is missing data.
 
@@ -1250,7 +1250,7 @@ We've covered the basics, so now it's time for the advanced topics. One of those
 In this section, you will implement an optimistic UI for when a user clicks the watch/unwatch mutation you implemented in a previous exercise. If you haven't, it's time to implement it now, or you can substitute it with the star or unstar mutation. Either way, completing the optimistic UI behavior for all three mutations is the next exercise. For completeness, this is a possible implementation of the watch mutation as a button next to the "Star"/"Unstar" buttons. First, the mutation:
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const WATCH_REPOSITORY = gql`
   mutation ($id: ID!, $viewerSubscription: SubscriptionState!) {
@@ -1265,12 +1265,12 @@ const WATCH_REPOSITORY = gql`
   }
 `;
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Second, the usage of the mutation with a Mutation render prop component:
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const VIEWER_SUBSCRIPTIONS = {
   SUBSCRIBED: 'SUBSCRIBED',
@@ -1327,12 +1327,12 @@ const RepositoryItem = ({ ... }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 And third, the missing update function that is passed to the Mutation component:
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const updateWatch = (
   client,
@@ -1368,12 +1368,12 @@ const updateWatch = (
   });
 };
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Now let's get to the optimistic UI feature. Fortunately, the Mutation component offers a prop for the optimistic UI strategy called `optimisticResponse`. It returns the same result, which is accessed as argument in the function passed to the `update` prop of the Mutation component. With a watch mutation, only the `viewerSubscription` status changes to subscribed or unsubscribed. This is an optimistic UI.
 
 {title="src/Repository/RepositoryItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const RepositoryItem = ({ ... }) => (
   <div>
     <div className="RepositoryItem-title">
@@ -1416,7 +1416,7 @@ const RepositoryItem = ({ ... }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 When you start your application and watch a repository, the "Watch" and "Unwatch" label of the button changes immediately after clicking it. This is because the optimistic response arrives synchronously, while the real response is pending and resolves later. Since the `__typename ` meta field comes with every Apollo request, include those as well.
 
@@ -1448,7 +1448,7 @@ Finally, you are going to implement another advanced feature when using a GraphQ
 First, extend the query next for your Profile component with the necessary information to allow pagination for the list of repositories:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_REPOSITORIES_OF_CURRENT_USER = gql`
 # leanpub-start-insert
   query($cursor: String) {
@@ -1477,14 +1477,14 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
   }
   ${REPOSITORY_FRAGMENT}
 `;
-~~~~~~~~
+~~~~~~~
 
 The `endCursor` can be used as `$cursor` variable when fetching the next page of repositories, but the `hasNextPage` can disable the functionality (e.g. not showing the "More" button) to fetch another page. The initial request to fetch the first page of repositories will have a `$cursor` variable of `undefined`, though. GitHub's GraphQL API will handle this case gracefully and return the first items from the list of repositories without considering the `after` argument. Every other request to fetch more items from the list will send a defined `after` argument with the cursor, which is the `endCursor` from the query.
 
 Now we have all information to fetch more pages of repositories from GitHub's GraphQL API. The Query component exposes a function to retrieve them in its child function. Since the button to fetch more repositories fits best in the the RepositoryList component, you can pass this function as prop to it.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query query={GET_REPOSITORIES_OF_CURRENT_USER}>
 # leanpub-start-insert
@@ -1503,12 +1503,12 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 Next, use the function in the RepositoryList component, and add a button to fetch successive pages of repositories that appears when another page is available.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 import React, { Fragment } from 'react';
 # leanpub-end-insert
@@ -1543,12 +1543,12 @@ const RepositoryList = ({ repositories, fetchMore }) => (
 );
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 The `fetchMore()` function performs the query from the initial request, and takes a configuration object, which can be used to override variables. With pagination, this means you pass the `endCursor` of the previous query result to use it for the query as `after` argument. Otherwise, you would perform the initial request again because no variables are specified.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const RepositoryList = ({ repositories, fetchMore }) => (
   <Fragment>
     ...
@@ -1571,12 +1571,12 @@ const RepositoryList = ({ repositories, fetchMore }) => (
     )}
   </Fragment>
 );
-~~~~~~~~
+~~~~~~~
 
 If you attempt to click the button, you should get the following error message: *Error: updateQuery option is required.*. The `updateQuery` function is needed to tell Apollo Client how to merge the previous result with a new one. Define the function outside of the button, because it would become too verbose otherwise.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const updateQuery = (previousResult, { fetchMoreResult }) => {
   ...
@@ -1606,12 +1606,12 @@ const RepositoryList = ({ repositories, fetchMore }) => (
     )}
   </Fragment>
 );
-~~~~~~~~
+~~~~~~~
 
 The function has access to the previous query result, and to the next result that resolves after the button click:
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const updateQuery = (previousResult, { fetchMoreResult }) => {
 # leanpub-start-insert
   if (!fetchMoreResult) {
@@ -1634,14 +1634,14 @@ const updateQuery = (previousResult, { fetchMoreResult }) => {
   };
 # leanpub-end-insert
 };
-~~~~~~~~
+~~~~~~~
 
 In this function, you can merge both results with the JavaScript spread operator. If there is no new result, return the previous result. The important part is merging the `edges` of both repositories objects to have a merge list of items. The `fetchMoreResult` takes precedence over the `previousResult` in the `repositories` object because it contains the new `pageInfo`, with its `endCursor` and `hasNextPage` properties from the last paginated result. You need to have those when clicking the button another time to have the correct cursor as an argument. If you want to checkout an alternative to the verbose JavaScript spread operator when dealing with deeply nested data, checkout the changes in [this GitHub Pull Request](https://github.com/the-road-to-graphql/react-graphql-github-apollo/pull/14) that uses Lenses from Ramda.js.
 
 To add one more small improvement for user friendliness, add a loading indicator when more pages are fetched. So far, the `loading` boolean in the Query component of the Profile component is only true for the initial request, but not for the following requests. Change this behavior with a prop that is passed to the Query component, and the loading boolean will be updated accordingly.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query
     query={GET_REPOSITORIES_OF_CURRENT_USER}
@@ -1654,12 +1654,12 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 When you run your application again and try the "More" button, you should see odd behavior. Every time you load another page of repositories, the loading indicator is shown, but the list of repositories disappears entirely, and the merged list is rendered as assumed. Since the `loading` boolean becomes true with the initial and successive requests, the conditional rendering in the Profile component will always show the loading indicator. It returns from the Profile function early, never reaching the code to render the RepositoryList. A quick change from `||` to `&&` of the condition will allow it to show the loading indicator for the initial request only. Every request after that, where the `viewer` object is available, is beyond this condition, so it renders the RepositoryList component.
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query
     query={GET_REPOSITORIES_OF_CURRENT_USER}
@@ -1688,12 +1688,12 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 The boolean can be passed down to the RepositoryList component. There it can be used to show a loading indicator instead of the "More" button. Since the boolean never reaches the RepositoryList component for the initial request, you can be sure that the "More" button only changes to the loading indicator when there is a successive request pending.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Fragment } from 'react';
 
 # leanpub-start-insert
@@ -1726,7 +1726,7 @@ const RepositoryList = ({ repositories, loading, fetchMore }) => (
 # leanpub-end-insert
   </Fragment>
 );
-~~~~~~~~
+~~~~~~~
 
 The pagination feature is complete now, and you are fetching successive pages of an initial page, then merging the results in Apollo Client's cache. In addition, you show your user feedback about pending requests for either the initial request or further page requests.
 
@@ -1735,7 +1735,7 @@ Now we'll take it a step further, making the button used to fetch more repositor
 For another way, imagine you wanted to extract the functionality of the `More` button into a FetchMore component. The most important thing you would need is the `fetchMore()` function from the query result. The `fetchMore()` function takes an object to pass in the necessary `variables` and `updateQuery` information as a configuration. While the former is used to define the next page by its cursor, the latter is used to define how the results should be merged in the local state. These are the three essential parts: fetchMore, variables, and updateQuery. You may also want to shield away the conditional renderings in the FetchMore component, which happens because of the `loading` or `hasNextPage` booleans. Et voilà! That's how you get the interface to your FetchMore abstraction component.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Fragment } from 'react';
 
 # leanpub-start-insert
@@ -1770,12 +1770,12 @@ const RepositoryList = ({ repositories, loading, fetchMore }) => (
 );
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 Now this FetchMore component can be used by other paginated lists as well, because every part that can be dynamic is passed as props to it. Implementing a FetchMore component in the *src/FetchMore/index.js* is the next step. First, the main part of the component:
 
 {title="src/FetchMore/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -1798,12 +1798,12 @@ const FetchMore = ({
 );
 
 export default FetchMore;
-~~~~~~~~
+~~~~~~~
 
 Here, you can see how the `variables` and `updateQuery` are taken as configuration object for the `fetchMore()` function when it's invoked. The button can be made cleaner using the Button component you defined in a previous section. To add a different style, let's define a specialized ButtonUnobtrusive component next to the Button component in the *src/Button/index.js* file:
 
 {title="src/Button/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -1832,12 +1832,12 @@ export { ButtonUnobtrusive };
 # leanpub-end-insert
 
 export default Button;
-~~~~~~~~
+~~~~~~~
 
 Now the ButtonUnobtrusive component is used as button instead of the button element in the FetchMore component. In addition, the two booleans `loading` and `hasNextPage` can be used for the conditional rendering, to show the Loading component or nothing, because there is no next page which can be fetched.
 
 {title="src/FetchMore/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 # leanpub-start-insert
@@ -1878,7 +1878,7 @@ const FetchMore = ({
 );
 
 export default FetchMore;
-~~~~~~~~
+~~~~~~~
 
 That's it for the abstraction of the FetchMore button for paginated lists with Apollo Client. Basically, you pass in everything needed by the `fetchMore()` function, including the function itself. You can also pass all booleans used for conditional renderings. You end up with a reusable FetchMore button that can be used for every paginated list.
 
@@ -1894,22 +1894,22 @@ That's it for the abstraction of the FetchMore button for paginated lists with A
 In this section, you introduce [React Router](https://github.com/ReactTraining/react-router) to show two separate pages for your application. At the moment, you are only showing one page with a Profile component that displays all your repositories. We want to add another Organization component that shows repositories by an organization, and there could be a search field as well, to lookup individual organizations with their repositories on that page. Let's do this by introducing React Router to your application. If you haven't used React Router before, make sure to conduct the exercises of this section to learn more about it.
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install react-router-dom --save
-~~~~~~~~
+~~~~~~~
 
 In your *src/constants/routes.js* file, you can specify both routes you want to make accessible by React Router. The `ORGANIZATION` route points to the base URL, while the `PROFILE` route points to a more specific URL.
 
 {title="src/constants/routes.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 export const ORGANIZATION = '/';
 export const PROFILE = '/profile';
-~~~~~~~~
+~~~~~~~
 
 Next, map both routes to their components. The App component is the perfect place to do it because the two routes will exchange the Organization and Profile components based on the URL there.
 
 {title="src/App/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -1952,23 +1952,23 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 The Organization component wasn't implemented yet, but you can start with a functional stateless component in the *src/Organization/index.js* file, that acts as a placeholder to keep the application working for now.
 
 {title="src/Organization/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 const Organization = () => <div>Organization</div>;
 
 export default Organization;
-~~~~~~~~
+~~~~~~~
 
 Since you mapped both routes to their respective components, so you want to implement navigation from one route to another. For this, introduce a **Navigation** component in the App component.
 
 {title="src/App/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -1998,12 +1998,12 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 Next, we'll implement the Navigation component, which is responsible for displaying the two links to navigate between your routes using React Router's Link component.
 
 {title="src/App/Navigation/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -2023,7 +2023,7 @@ const Navigation = () => (
 );
 
 export default Navigation;
-~~~~~~~~
+~~~~~~~
 
 The Profile page works as before, but the Organization page is empty. In the last step, you defined the two routes as constants, used them in the App component to map to their respective components, and introduced Link components to navigate to them in the Navigation component.
 
@@ -2032,7 +2032,7 @@ Another great feature of the Apollo Client is that it caches query requests. Whe
 The next part of this section is the Organization component. It is the same as the Profile component, except the query differs because it takes a variable for the organization name to identify the organization's repositories.
 
 {title="src/Organization/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
@@ -2069,14 +2069,14 @@ const Organization = ({ organizationName }) => (
 );
 
 export default Organization;
-~~~~~~~~
+~~~~~~~
 
 The Query component in the Organization component takes a query tailored to the organization being the top level field of the query. It takes a variable to identify the organization, and it uses the newly introduced `skip` prop to skip executing the query if no organization identifier is provided. Later, you will pass an organization identifier from the App component. You may have noticed that the repository fragment you introduced earlier to update the local state in the cache can be reused here. It saves lines of code, and more importantly, ensures the returned list of repositories have identical structures to the list of repositories in the Profile component.
 
 Next, extend the query to fit the requirements of the pagination feature. It requires the `cursor` argument to identify the next page of repositories. The `notifyOnNetworkStatusChange` prop is used to update the `loading` boolean for paginated requests as well.
 
 {title="src/Organization/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 const GET_REPOSITORIES_OF_ORGANIZATION = gql`
@@ -2122,12 +2122,12 @@ const Organization = ({ organizationName }) => (
 );
 
 export default Organization;
-~~~~~~~~
+~~~~~~~
 
 Lastly, the render prop child function needs to be implemented. It doesn't differ much from the Query's content in the Profile component. Its purpose is to handle edge cases like loading and 'no data' errors, and eventually, to show a list of repositories. Because the RepositoryList component handles the pagination feature, this improvement is included in the newly implemented Organization component.
 
 {title="src/Organization/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -2165,12 +2165,12 @@ const Organization = ({ organizationName }) => (
 );
 
 export default Organization;
-~~~~~~~~
+~~~~~~~
 
 Provide a `organizationName` as prop when using the Organization in the App component, and leave it inlined for now. Later, you will make it dynamic with a search field.
 
 {title="src/App/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   render() {
     return (
@@ -2199,14 +2199,14 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 The Organization component should almost work now, as the `More` button is the only incomplete part. The remaining issue is the resolving block for the pagination feature in the `updateQuery` function. It assumes that the nested data structure always starts with a `viewer` object. It does for the Profile page, but not for the Organization page. There the top level object is the `organization` followed by the list of `repositories`. Only the top level object changes from page to page, where the underlying structure stays identical.
 
  When the top level object changes from page to page, the ideal next step is to tell the RepositoryList component its top level object from the outside. With the Organization component, its the top-level object `organization`, which could be passed as a string and reused as a dynamic key later:
 
 {title="src/Organization/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Organization = ({ organizationName }) => (
   <Query ... >
     {({ data, loading, error, fetchMore }) => {
@@ -2225,12 +2225,12 @@ const Organization = ({ organizationName }) => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 With the Profile component, the `viewer` would be the top level object:
 
 {title="src/Profile/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Profile = () => (
   <Query ... >
     {({ data, loading, error, fetchMore }) => {
@@ -2249,12 +2249,12 @@ const Profile = () => (
     }}
   </Query>
 );
-~~~~~~~~
+~~~~~~~
 
 Now you can handle the new case in the RepositoryList component by passing the entry as [computed property name](https://developer.mozilla.org/my/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) to the `updateQuery` function. Instead of passing the `updateQuery` function directly to the FetchMore component, it can be derived from a higher-order function needed to pass the new `entry` property.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const RepositoryList = ({
   repositories,
   loading,
@@ -2281,12 +2281,12 @@ const RepositoryList = ({
     </FetchMore>
   </Fragment>
 );
-~~~~~~~~
+~~~~~~~
 
 The higher-order function next to the RepositoryList component is completed as such:
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const getUpdateQuery = entry => (
 # leanpub-end-insert
@@ -2318,14 +2318,14 @@ const getUpdateQuery = entry => (
     },
   };
 };
-~~~~~~~~
+~~~~~~~
 
 That's how a deeply-nested object is updated with the `fetchMoreResult`, even though the top level component from the query result is not static. The pagination feature should work on both pages now. Take a moment to recap the last implementations again and why these were necessary.
 
 Next, we'll implement the search function I mentioned earlier. The best place to add the search field would be the Navigation component, but only when the Organization page is active. React Router comes with a useful higher-order component to access to the current URL, which can be used to show a search field.
 
 {title="src/App/Navigation/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import { Link, withRouter } from 'react-router-dom';
@@ -2359,12 +2359,12 @@ const Navigation = ({
 # leanpub-start-insert
 export default withRouter(Navigation);
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 The OrganizationSearch component is implemented next to the Navigation component in the next steps. Before that can work, there needs to be some kind of initial state for the OrganizationSearch, as well as a callback function to update the initial state in the Navigation component. To accommodate this, the Navigation component becomes a class component.
 
 {title="src/App/Navigation/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -2406,12 +2406,12 @@ class Navigation extends React.Component {
 # leanpub-end-insert
 
 export default withRouter(Navigation);
-~~~~~~~~
+~~~~~~~
 
 The OrganizationSearch component implemented in the same file would also work with the following implementation. It handles its own local state, the value that shows up in the input field, but uses it as an initial value from the parent component. It also receives a callback handler, which can be used in the `onSubmit()` class method to propagate the search fields value on a submit interaction up the component tree.
 
 {title="src/App/Navigation/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -2462,12 +2462,12 @@ class OrganizationSearch extends React.Component {
 # leanpub-end-insert
 
 export default withRouter(Navigation);
-~~~~~~~~
+~~~~~~~
 
 The Input component is a slightly styled input element that is defined in *src/Input/index.js* as its own component.
 
 {title="src/Input/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -2479,12 +2479,12 @@ const Input = ({ children, color = 'black', ...props }) => (
 );
 
 export default Input;
-~~~~~~~~
+~~~~~~~
 
 While the search field works in the Navigation component, it doesn't help the rest of the application. It only updates the state in the Navigation component when a search request is submitted. However, the value of the search request is needed in the Organization component as a GraphQL variable for the query, so the local state needs to be lifted up from the Navigation component to the App component. The Navigation component becomes a stateless functional component again.
 
 {title="src/App/Navigation/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const Navigation = ({
   location: { pathname },
@@ -2512,12 +2512,12 @@ const Navigation = ({
 # leanpub-start-insert
 );
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 The App component takes over the responsibility from the Navigation component, managing the local state, passing the initial state and a callback function to update the state to the Navigation component, and passing the state itself to the Organization component to perform the query:
 
 {title="src/App/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 class App extends Component {
@@ -2569,7 +2569,7 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 You have implemented a dynamic GraphQL query with a search field. Once a new `organizationName` is passed to the Organization component from a local state change, the Query component triggers another request due to a re-render. The request is not always made to the remote GraphQL API, though. The Apollo Client cache is used when an organization is searched twice. Also, you have used the well-known technique called lifting state in React to share the state across components.
 
@@ -2591,7 +2591,7 @@ The foundation will be rendering the list of issues. You will implement client-s
 First, render a new component called 'Issues' in your RepositoryList component. This component takes two props that are used later in a GraphQL query to identify the repository from which you want to fetch the issues.
 
 {title="src/Repository/RepositoryList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 import FetchMore from '../../FetchMore';
@@ -2627,16 +2627,16 @@ const RepositoryList = ({
 );
 
 export default RepositoryList;
-~~~~~~~~
+~~~~~~~
 
 In the *src/Issue/index.js* file, import and export the Issues component. Since the issue feature can be kept in a module on its own, it has this *index.js* file again. That's how you can tell other developers to access only this feature module, using the *index.js* file as its interface. Everything else is kept private.
 
 {title="src/Issue/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import Issues from './IssueList';
 
 export default Issues;
-~~~~~~~~
+~~~~~~~
 
 Note how the component is named Issues, not IssueList. The naming convention is used to break down the rendering of a list of items: Issues, IssueList and IssueItem. Issues is the container component, where you query the data and filter the issues, and the IssueList and IssueItem are only there as presentational components for rendering. In contrast, the Repository feature module hasn't a Repositories component, because there was no need for it. The list of repositories already came from the Organization and Profile components and the Repository module's components are mainly only there for the rendering. This is only one opinionated approach of naming the components, however.
 
@@ -2653,7 +2653,7 @@ It is simple to conclude that nesting queries in a naive way solves all of our p
 First, define the Issues component which has access to the props which were passed in the RepositoryList component. It doesn't render much yet.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import './style.css';
@@ -2663,12 +2663,12 @@ const Issues = ({ repositoryOwner, repositoryName }) =>
   </div>
 
 export default Issues;
-~~~~~~~~
+~~~~~~~
 
 Second, define the query in the *src/Issue/IssueList/index.js* file to retrieve issues of a repository. The repository is identified by its owner and name. Also, add the `state` field as one of the fields for the query result. This is used for client-side filtering, for showing issues with an open or closed state.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import gql from 'graphql-tag';
@@ -2698,12 +2698,12 @@ const GET_ISSUES_OF_REPOSITORY = gql`
 # leanpub-end-insert
 
 ...
-~~~~~~~~
+~~~~~~~
 
 Third, introduce the Query component and pass it the previously defined query and the necessary variables. Use its render prop child function to access the data, to cover all edge cases and to render a IssueList component eventually.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import { Query } from 'react-apollo';
@@ -2761,12 +2761,12 @@ const IssueList = ({ issues }) => (
 # leanpub-end-insert
 
 export default Issues;
-~~~~~~~~
+~~~~~~~
 
 Finally, implement a basic IssueItem component in the *src/Issue/IssueItem/index.js* file. The snippet below shows a placeholder where you can implement the Commenting feature, which we'll cover later.
 
 {title="src/Issue/IssueItem/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 
 import Link from '../../Link';
@@ -2789,7 +2789,7 @@ const IssueItem = ({ issue }) => (
 );
 
 export default IssueItem;
-~~~~~~~~
+~~~~~~~
 
 Once you start your application again, you should see the initial page of paginated issues rendered below each repository. That's a performance bottleneck. Worse, the GraphQL requests are not bundled in one request, as with the issues list field in the Organization and Profile components. In the next steps you are implementing client-side filtering. The default is to show no issues, but it can toggle between states of showing none, open issues, and closed issues using a button, so the issues will not be queried before toggling one of the issue states.
 
@@ -2806,25 +2806,25 @@ In this section, we enhance the Issue feature with client-side filtering. It pre
 First, let's introduce our three states as enumeration next to the Issues component. The `NONE` state is used to show no issues; otherwise, the other states are used to show open or closed issues.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const ISSUE_STATES = {
   NONE: 'NONE',
   OPEN: 'OPEN',
   CLOSED: 'CLOSED',
 };
-~~~~~~~~
+~~~~~~~
 
 Second, let's implement a short function that decides whether it is a state to show the issues or not. This function can be defined in the same file.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const isShow = issueState => issueState !== ISSUE_STATES.NONE;
-~~~~~~~~
+~~~~~~~
 
 Third, the function can be used for conditional rendering, to either query the issues and show the IssueList, or to do nothing. It's not clear yet where the `issueState` property comes from.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Issues = ({ repositoryOwner, repositoryName }) => (
   <div className="Issues">
 # leanpub-start-insert
@@ -2836,12 +2836,12 @@ const Issues = ({ repositoryOwner, repositoryName }) => (
     )}
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 The `issueState` property must come from the local state to toggle it via a button in the component, so the Issues component must be refactored to a class component to manage this state.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 class Issues extends React.Component {
   state = {
@@ -2864,12 +2864,12 @@ class Issues extends React.Component {
   }
 }
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 The application should be error-free now, because the initial state is set to `NONE` and the conditional rendering prevents the query and the rendering of a result. However, the client-side filtering is not done yet, as you still need to toggle the `issueState` property with React's local state. The ButtonUnobtrusive component has the appropriate style, so we can reuse it to implement this toggling behavior to transition between the three available states.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 import IssueItem from '../IssueItem';
@@ -2915,12 +2915,12 @@ class Issues extends React.Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 In the last step, you introduced the button to toggle between the three states. You used two enumerations, `TRANSITION_LABELS` and `TRANSITION_STATE`, to show an appropriate button label and to define the next state after a state transition. These enumerations can be defined next to the `ISSUE_STATES` enumeration.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const TRANSITION_LABELS = {
   [ISSUE_STATES.NONE]: 'Show Open Issues',
   [ISSUE_STATES.OPEN]: 'Show Closed Issues',
@@ -2932,12 +2932,12 @@ const TRANSITION_STATE = {
   [ISSUE_STATES.OPEN]: ISSUE_STATES.CLOSED,
   [ISSUE_STATES.CLOSED]: ISSUE_STATES.NONE,
 };
-~~~~~~~~
+~~~~~~~
 
 As you can see, whereas the former enumeration only matches a label to a given state, the latter enumeration matches the next state to a given state. That's how the toggling to a next state can be made simple. Last but not least, the `issueState` from the local state has to be used to filter the list of issues after they have been queried and should be rendered.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class Issues extends React.Component {
   ...
 
@@ -2989,7 +2989,7 @@ class Issues extends React.Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 You have implemented client-side filtering. The button is used to toggle between the three states managed in the local state of the component.  The issues are only queried in filtered and rendered states. In the next step, the existing client-side filtering should be advanced to a server-side filtering, which means the filtered issues are already requested from the server and not filtered afterward on the client.
 
@@ -3006,14 +3006,14 @@ You have implemented client-side filtering. The button is used to toggle between
 Before starting with the server-side filtering, let's recap the last exercise in case you had difficulties with it. Basically you can perform the refactoring in three steps. First, install recompose as package for your application on the command line:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install recompose --save
-~~~~~~~~
+~~~~~~~
 
 Second, import the `withState` higher-order component in the *src/Issue/IssueList/index.js* file and use it to wrap your exported Issues component, where the first argument is the property name in the local state, the second argument is the handler to change the property in the local state, and the third argument is the initial state for that property.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -3030,12 +3030,12 @@ export default withState(
   ISSUE_STATES.NONE,
 )(Issues);
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Finally, refactor the Issues component from a class component to a functional stateless component. It accesses the `issueState` and `onChangeIssueState()` function in its props now. Remember to change the usage of the `onChangeIssueState` prop to being a function and not a class method anymore.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -3062,12 +3062,12 @@ const Issues = ({
 # leanpub-end-insert
 
 ...
-~~~~~~~~
+~~~~~~~
 
 The previous section makes writing stateful components, where the state is much more convenient. Next, advance the filtering from client-side to server-side. We use the defined GraphQL query and its arguments to make a more exact query by requesting only open or closed issues. In the *src/Issue/IssueList/index.js* file, extend the query with a variable to specify the issue state:
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = gql`
   query(
     $repositoryOwner: String!
@@ -3094,12 +3094,12 @@ const GET_ISSUES_OF_REPOSITORY = gql`
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Next, you can use the `issueState` property as variable for your Query component. In addition, remove the client-side filter logic from the Query component's render prop function.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Issues = ({
   repositoryOwner,
   repositoryName,
@@ -3137,7 +3137,7 @@ const Issues = ({
     )}
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 You are only querying open or closed issues. Your query became more exact, and the filtering is no longer handled by the client.
 
@@ -3157,7 +3157,7 @@ This section is all about prefetching data, though the user doesn't need it imme
 When your application renders for the first time, there no issues fetched, so no issues are rendered. The user has to toggle the filter button to fetch open issues, and do it again to fetch closed issues. The third click will hide the list of issues again. The goal of this section is to prefetch the next bulk of issues when the user hovers the filter button. For instance, when the issues are still hidden and the user hovers the filter button, the issues with the open state are prefetched in the background. When the user clicks the button, there is no waiting time, because the issues with the open state are already there. The same scenario applies for the transition from open to closed issues. To prepare this behavior, split out the filter button as its own component in the *src/Issue/IssueList/index.js* file:
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Issues = ({
   repositoryOwner,
   repositoryName,
@@ -3187,12 +3187,12 @@ const IssueFilter = ({ issueState, onChangeIssueState }) => (
   </ButtonUnobtrusive>
 );
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Now it is easier to focus on the IssueFilter component where most of the logic for data prefetching is implemented. Like before, the prefetching should happen when the user hovers over the button. There needs to be a prop for it, and a callback function which is executed when the user hovers over it. There is such a prop (attribute) for a button (element). We are dealing with HTML elements here.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const prefetchIssues = () => {};
 # leanpub-end-insert
@@ -3209,12 +3209,12 @@ const IssueFilter = ({ issueState, onChangeIssueState }) => (
     {TRANSITION_LABELS[issueState]}
   </ButtonUnobtrusive>
 );
-~~~~~~~~
+~~~~~~~
 
 The `prefetchIssue()` function has to execute the identical GraphQL query executed by the Query component in the Issues component, but this time it is done in an imperative way instead of declarative. Rather than using the Query component for it, use the the Apollo Client instance directly to execute a query. Remember, the Apollo Client instance is hidden in the component tree, because you used React's Context API to provide the Apollo Client instance the component tree's top level. The Query and Mutation components have access to the Apollo Client, even though you have never used it yourself directly. However, this time you use it to query the prefetched data. Use the ApolloConsumer component from the React Apollo package to expose the Apollo Client instance in your component tree. You have used the ApolloProvider somewhere to provide the client instance, and you can use the ApolloConsumer to retrieve it now. In the *src/Issue/IssueList/index.js* file, import the ApolloConsumer component and use it in the IssueFilter component. It gives you access to the Apollo Client instance via its render props child function.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React from 'react';
 # leanpub-start-insert
 import { Query, ApolloConsumer } from 'react-apollo';
@@ -3244,12 +3244,12 @@ const IssueFilter = ({ issueState, onChangeIssueState }) => (
   </ApolloConsumer>
 # leanpub-end-insert
 );
-~~~~~~~~
+~~~~~~~
 
 Now you have access to the Apollo Client instance to perform queries and mutations, which will enable you to query GitHub's GraphQL API imperatively. The variables needed to perform the prefetching of issues are the same ones used in the Query component. You need to pass those to the IssueFilter component, and then to the `prefetchIssues()` function.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 const Issues = ({
@@ -3306,12 +3306,12 @@ const IssueFilter = ({
 );
 
 ...
-~~~~~~~~
+~~~~~~~
 
 Use this information to perform the prefetching data query. The Apollo Client instance exposes a `query()` method for this. Make sure to retrieve the next `issueState`, because when prefetching open issues, the current `issueState` should be `NONE`.
 
 {title="src/Issue/IssueList/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const prefetchIssues = (
 # leanpub-start-insert
   client,
@@ -3335,7 +3335,7 @@ const prefetchIssues = (
   }
 # leanpub-end-insert
 };
-~~~~~~~~
+~~~~~~~
 
 That's it. Once the button is hovered, it should prefetch the issues for the next `issueState`. The Apollo Client makes sure that the new data is updated in the cache like it would do for the Query component. There shouldn't be any visible loading indicator in between except when the network request takes too long and you click the button right after hovering it. You can verify that the request is happening in your network tab in the developer development tools of your browser. In the end, you have learned about two UX improvements that can be achieved with ease when using Apollo Client: optimistic UI and prefetching data.
 
@@ -3373,7 +3373,7 @@ I hope this section, building your own feature in the application with all the l
 This section has all the CSS files as well as their content and locations, to give your React with GraphQL and Apollo Client application a nice touch. It even makes it responsive for mobile and tablet devices. These are only recommendations, though; you can experiment with them, or come up with your own styles.
 
 {title="src/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 #root,
 html,
 body {
@@ -3427,10 +3427,10 @@ a:active {
 pre {
   white-space: pre-wrap;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/App/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .App {
   min-height: 100%;
   display: flex;
@@ -3455,10 +3455,10 @@ pre {
     margin-top: 68px;
   }
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/App/Navigation/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .Navigation {
   overflow: hidden;
   position: fixed;
@@ -3504,10 +3504,10 @@ pre {
     padding: 10px 10px;
   }
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Button/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .Button {
   padding: 10px;
   background: none;
@@ -3554,19 +3554,19 @@ pre {
 .Button_unobtrusive:focus {
   outline: none;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Error/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .ErrorMessage {
   margin: 20px;
   display: flex;
   justify-content: center;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/FetchMore/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .FetchMore {
   display: flex;
   flex-direction: column;
@@ -3576,10 +3576,10 @@ pre {
 .FetchMore-button {
   margin: 20px 0;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Input/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .Input {
   border: none;
   padding: 10px;
@@ -3600,10 +3600,10 @@ pre {
   border-bottom: 1px solid #000;
   color: #000;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Issue/IssueItem/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .IssueItem {
   margin-bottom: 10px;
   display: flex;
@@ -3615,10 +3615,10 @@ pre {
   padding-left: 10px;
   border-left: 1px solid #000;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Issue/IssueList/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .Issues {
   display: flex;
   flex-direction: column;
@@ -3641,10 +3641,10 @@ pre {
     align-items: center;
   }
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Loading/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .LoadingIndicator {
   display: flex;
   flex-direction: column;
@@ -3655,10 +3655,10 @@ pre {
 .LoadingIndicator_center {
   margin-top: 30%;
 }
-~~~~~~~~
+~~~~~~~
 
 {title="src/Repository/style.css",lang="css"}
-~~~~~~~~
+~~~~~~~
 .RepositoryItem {
   padding: 20px;
   border-bottom: 1px solid #000;
@@ -3715,7 +3715,7 @@ pre {
     text-align: center;
   }
 }
-~~~~~~~~
+~~~~~~~
 
 | |
 

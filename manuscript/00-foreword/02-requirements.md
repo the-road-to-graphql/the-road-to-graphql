@@ -19,11 +19,11 @@ On the server-side, this book uses Node with Express as library to teach about G
 You will need to have [node and npm](https://nodejs.org/en/) installed, which are used to manage the libraries we'll use along the way. In this book, you will install external node packages via npm (node package manager). These node packages can be libraries or whole frameworks. You can verify which node and npm versions you have in the command line. If you don't see output in the terminal, you will need to install node and npm. These are the versions used for this publication:
 
 {title="Command Line",lang="text"}
-~~~~~~~~
+~~~~~~~
 node --version
 *v10.11.0
 npm --version
 *v6.4.1
-~~~~~~~~
+~~~~~~~
 
 If you read The Road to learn React, you should be familiar with the setup already, since it introduces the npm ecosystem as well.

@@ -3,7 +3,7 @@
 When it comes to network requests between client and server applications, [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) is one of the most popular choices to connect both worlds. In REST, everything evolves around the idea of having resources that are accessible by URLs. You can read a resource with a HTTP GET request, create a resource with a HTTP POST request, and update or delete it with HTTP PUT and DELETE requests. These are called CRUD (Create, Read, Update, Delete) operations. Resources can be anything from authors, articles, or users. The format for transferring data is not opinionated with REST, but most often people will use JSON for it. In the end, REST enables applications to communicate with each other by using plain HTTP with URLs and HTTP methods.
 
 {title="Code Playground",lang="json"}
-~~~~~~~~
+~~~~~~~
 // a RESTful request with HTTP GET
 https://api.domain.com/authors/7
 
@@ -15,7 +15,7 @@ https://api.domain.com/authors/7
   "firstName": "Robin",
   "lastName": "Wieruch"
 }
-~~~~~~~~
+~~~~~~~
 
 Though REST was the status quo for a long time, a Facebook technology called GraphQL has recently emerged as a potential successor. The following sections introduce GraphQL's advantages and disadvantages, as well as possible alternatives for developers who need options.
 
@@ -30,7 +30,7 @@ A GraphQL operation is either a query (read), mutation (write), or subscription 
 Once this GraphQL operation reaches the backend application, it can be interpreted against the entire GraphQL schema there, and resolved with data for the frontend application. GraphQL is not opinionated about the network layer, which is often HTTP, nor about the payload format, which is usually  JSON. It isn't opinionated about the application architecture at all. It is only a query language.
 
 {title="Code Playground",lang="json"}
-~~~~~~~~
+~~~~~~~
 // a GraphQL query
 author(id: "7") {
   id
@@ -62,7 +62,7 @@ author(id: "7") {
     }
   }
 }
-~~~~~~~~
+~~~~~~~
 
 One query already requests multiple resources (author, article), called fields in GraphQL, and only a particular set of nested fields for these fields (name, urlSlug for article), even though the entity itself offers more data in its GraphQL schema (e.g. description, releaseData for article). A RESTful architecture needs at least two waterfall requests to retrieve the author entity and its articles, but the GraphQL query made it happen in one. In addition, the query only selected the necessary fields instead of the whole entity.
 

@@ -11,9 +11,9 @@ In the following, you will consume GitHub's GraphQL API, and then output the que
 After you've cloned and installed the Node.js boilerplate project and created your personal access token, install these two packages in the command line from the root folder of the new project:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install apollo-boost graphql --save
-~~~~~~~~
+~~~~~~~
 
 The [apollo-boost](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost) package gives access to a zero-configuration Apollo Client, and the [graphql](https://github.com/graphql/graphql-js) package allows GraphQL queries, mutations, and subscriptions on both the client and server. It is JavaScript's reference implementation of [Facebook's GraphQL specification](https://github.com/facebook/graphql).
 
@@ -22,18 +22,18 @@ In the next steps, you will configure and use the Apollo Client that comes with 
 In your *src/index.js* file, you can import the Apollo Client from Apollo Boost. After that, you can create a client instance by calling its constructor with a URI. The client needs to know where the data comes from, and where it should be written, so you can pass GitHub's API endpoint to it.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
 });
-~~~~~~~~
+~~~~~~~
 
 The Apollo Client already works this way. Remember, however, that GitHub's GraphQL API requires a personal access token. That's why you have to define it once when creating the Apollo Client instance. Therefore, you can use the `request` property to define a function which has access to the context of each request made through the Apollo Client. There, you pass the authorization header using Apollo Boost as one of its default headers.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
@@ -48,28 +48,28 @@ const client = new ApolloClient({
   },
 # leanpub-end-insert
 });
-~~~~~~~~
+~~~~~~~
 
 You did the same for the previous application, using only axios for plain HTTP requests. You configured axios once with the GraphQL API endpoint to default all requests to this URI, and set up the authorization header. The same happened here, because it's enough to configure your client once for all the following GraphQL requests.
 
 Remember, replace the `YOUR_GITHUB_PERSONAL_ACCESS_TOKEN` string with your personal access token you created on GitHub's website before. However, you may not want to put your access token directly into the source code, so you can create a *.env* file which holds all of your environment variables in your project folder. If you don't want to share the personal token in a public GitHub repository, you can also add the file to your *.gitignore* file. In the command line, you can create this file:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 touch .env
-~~~~~~~~
+~~~~~~~
 
 Simply define your environment variables in this *.env* file. In your *.env* file, paste the following key value pair whereas the naming for the key is up to you and the value has to be your personal access token from GitHub.
 
 {title=".env",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 GITHUB_PERSONAL_ACCESS_TOKEN=xxxXXX
-~~~~~~~~
+~~~~~~~
 
 In any Node.js application, use the key as environment variable in your source code with the following package: [dotenv](https://github.com/motdotla/dotenv). Follow their instructions to install it for your project. Usually, the process is only a `npm install dotenv`, followed by including `import 'dotenv/config';` at the top of your *index.js* file. Afterward, you can use the personal access token from the *.env* file in your *index.js* file. If you run into an error, just continue reading this section to learn how to fix it.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import ApolloClient from 'apollo-boost';
 
 # leanpub-start-insert
@@ -88,26 +88,26 @@ const client = new ApolloClient({
     });
   },
 });
-~~~~~~~~
+~~~~~~~
 
 Note: There may be additional configuration steps for the previously installed dotenv package. Since the installation instructions may vary with different dotenv versions, check their GitHub website after you have installed it to find the best configurations.
 
 When you start your application with `npm start` without query or mutation and just Apollo Client, you might see the following error: *"Error: fetch is not found globally and no fetcher passed, to fix pass a fetch for your environment ..."*. The error occurs because the [native fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), which is used to make requests to remote APIs on a promise basis, is only available in the browser. You can't access it in a Node.js application that runs only in the command line. However, the Apollo Client uses the fetch API to perform queries and mutations, usually from a browser environment and not Node.js environment. As you may remember, a query or mutation can be performed with a simple HTTP request, so the Apollo Client uses the native fetch API from a browser to perform these requests. The solution is to use a node package to make fetch available in a Node.js environment. Fortunately, there are packages to address this issue, which can be installed via the command line:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install cross-fetch --save
-~~~~~~~~
+~~~~~~~
 
 Second, import it anonymously in your project:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 import 'cross-fetch/polyfill';
 # leanpub-end-insert
 import ApolloClient from 'apollo-boost';
-~~~~~~~~
+~~~~~~~
 
 The error should disappear when you start the application from the command line, but nothing happens just yet. An instance of the Apollo Client is created with a configuration. In the following, you will perform your first query with Apollo Client.
 
@@ -123,17 +123,17 @@ The error should disappear when you start the application from the command line,
 Now you are going to send your first query to GitHub's GraphQL API using Apollo Client. Import the following utility from Apollo Boost to define the query:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import 'cross-fetch/polyfill';
 # leanpub-start-insert
 import ApolloClient, { gql } from 'apollo-boost';
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Define your query with JavaScript template literals:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -146,12 +146,12 @@ const GET_ORGANIZATION = gql`
   }
 `;
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 Use the Apollo Client imperatively to send the query to GitHub's GraphQL API. Since the Apollo Client is promise-based, the `query()` method returns a promise that you can eventually resolve. Since the application runs in the command line, it's sufficient to console log the result there.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 # leanpub-start-insert
@@ -161,12 +161,12 @@ client
   })
   .then(console.log);
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 That's all there is to sending a query with the Apollo Client.  As noted, Apollo Client uses HTTP under the hood to send the defined query as payload in a POST method. The result on the command line after starting the application with `npm start` should look similar to the following:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 {
   data: {
     organization: {
@@ -179,7 +179,7 @@ That's all there is to sending a query with the Apollo Client.  As noted, Apollo
   networkStatus: 7,
   stale: false
 }
-~~~~~~~~
+~~~~~~~
 
 The requested information from the GraphQL query can be found in the `data` object. There, you will find the `organization` object with its `name` and `url` fields. The Apollo Client automatically requests the GraphQL [meta field](http://graphql.org/learn/queries/#meta-fields) `__typename`. The meta field can be used by the Apollo Client as an identifier, to allow caching and optimistic UI updates.
 
@@ -201,7 +201,7 @@ More meta information about the request can be found next to the `data` object. 
 You learned about GraphQL pagination and other GraphQL features in previous sections when you built the React with GraphQL application without Apollo. This section will introduce a couple of these features, like GraphQL variables. The `login` argument for the organization field in the previous query can be substituted with such a variable. First, you have to introduce the variable in your GraphQL query:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ORGANIZATION = gql`
 # leanpub-start-insert
   query($organization: String!) {
@@ -212,12 +212,12 @@ const GET_ORGANIZATION = gql`
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 And second, define it in a variables object in your query object:
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 client
   .query({
     query: GET_ORGANIZATION,
@@ -228,12 +228,12 @@ client
 # leanpub-end-insert
   })
   .then(console.log);
-~~~~~~~~
+~~~~~~~
 
 That's how you pass variables to the query using an instance of the Apollo Client in your application. Next, add the nested `repositories` list field to your organization. There, you can request all GitHub repositories in an organization. You may want to rename the query variable as well, but remember to change it when you use the Apollo Client.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const GET_REPOSITORIES_OF_ORGANIZATION = gql`
 # leanpub-end-insert
@@ -265,7 +265,7 @@ client
     },
   })
   .then(console.log);
-~~~~~~~~
+~~~~~~~
 
 You have seen a similar query structure in the application we created earlier, so this section has a couple of exercises for you to test the GraphQL skills you've learned. Solving the exercises will fortify your GraphQL skills, so that you can later focus on connecting the Apollo Client to your React application without any obstacles. You will find all the solutions to the exercises in a GitHub repository for this application at the end of the exercises, but you should consider working it out on your own first.
 
@@ -289,7 +289,7 @@ You have seen a similar query structure in the application we created earlier, s
 Previously, you learned how to query data from GitHub's GraphQL API using the Apollo Client. Once the client is set up with a configuration, you can use its `query()` method to send a GraphQL `query` with optional `variables`. As you have learned, reading data with GraphQL is not everything, because there are mutations for writing data as well. In this section, you are going to define a mutation to star a repository on GitHub. The Apollo Client instance sends the mutation, but first you have to define it.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const ADD_STAR = gql`
   mutation AddStar($repositoryId: ID!) {
     addStar(input: { starrableId: $repositoryId }) {
@@ -300,12 +300,12 @@ const ADD_STAR = gql`
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 The identifier for the repository is required, or GitHub's GraphQL server wouldn't know which repository you want to star. In the next code snippet, the Apollo Client is used to star a specific GitHub repository with a given identifier. The identifier can be retrieved by adding the `id` field to your repository `node` field in the query. Use the `mutate()` method on the Apollo Client to send the mutation in a `mutation` and `variables` payload. Anything can be done with the result to fit your application, but in this case, the result it is simply logged in the command line.
 
 {title="src/index.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 client
   .mutate({
     mutation: ADD_STAR,
@@ -314,7 +314,7 @@ client
     },
   })
   .then(console.log);
-~~~~~~~~
+~~~~~~~
 
 The result should be encapsulated in a `addStar` object (the name of the mutation), which should reflect exactly the objects and fields that you have defined in the mutation: `starrable`, `id` and `viewerHasStarred`.
 

@@ -11,17 +11,17 @@ After the last sections, you should be ready to use queries and mutations in you
 For this application, no elaborate React setup is needed. You will simply use [create-react-app](https://github.com/facebook/create-react-app) to create your React application with zero-configuration. If you want to have an elaborated React setup instead, read this [setup guide for using Webpack with React](https://www.robinwieruch.de/minimal-react-webpack-babel-setup/). For now, let's create the application with create-react-app. In your general projects folder, type the following instructions:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npx create-react-app react-graphql-github-vanilla
 cd react-graphql-github-vanilla
-~~~~~~~~
+~~~~~~~
 
 After your application has been created, you can test it with `npm start` and `npm test`. Again, after you have learned about plain React in *the Road to learn React*, you should be familiar with npm, create-react-app, and React itself.
 
 The following application will focus on the *src/App.js* file. It's up to you to split out components, configuration, or functions to their own folders and files. Let's get started with the App component in the mentioned file. In order to simplify it, you can change it to the following content:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Component } from 'react';
 
 const TITLE = 'React GraphQL GitHub Client';
@@ -37,21 +37,21 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 The component only renders a `title` as a headline. Before implementing any more React components, let's install a library to handle GraphQL requests, executing queries and mutations, using a HTTP POST method. For this, you will use [axios](https://github.com/axios/axios). On the command line, type the following command to install axios in the project folder:
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 npm install axios --save
-~~~~~~~~
+~~~~~~~
 
 Afterward, you can import axios next to your App component and configure it. It's perfect for the following application, because somehow you want to configure it only once with your personal access token and GitHub's GraphQL API.
 
 First, define a base URL for axios when creating a configured instance from it. As mentioned before, you don't need to define GitHub's URL endpoint every time you make a request because all queries and mutations point to the same URL endpoint in GraphQL. You get the flexibility from your query and mutation structures using objects and fields instead.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 import React, { Component } from 'react';
 # leanpub-start-insert
 import axios from 'axios';
@@ -64,12 +64,12 @@ const axiosGitHubGraphQL = axios.create({
 ...
 
 export default App;
-~~~~~~~~
+~~~~~~~
 
 Second, pass the personal access token as header to the configuration. The header is used by each request made with this axios instance.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 const axiosGitHubGraphQL = axios.create({
@@ -82,26 +82,26 @@ const axiosGitHubGraphQL = axios.create({
 });
 
 ...
-~~~~~~~~
+~~~~~~~
 
 Replace the `YOUR_GITHUB_PERSONAL_ACCESS_TOKEN` string with your personal access token. To avoid cutting and pasting your access token directly into the source code, you can create a *.env* file to hold all your environment variables on the command line in your project folder. If you don't want to share the personal token in a public GitHub repository, you can add the file to your *.gitignore*.
 
 {title="Command Line",lang="json"}
-~~~~~~~~
+~~~~~~~
 touch .env
-~~~~~~~~
+~~~~~~~
 
 Environment variables are defined in this *.env* file. Be sure to follow the correct naming constraints when using create-react-app, which uses `REACT_APP` as prefix for each key. In your *.env* file, paste the following key value pair. The key has to have the `REACT_APP` prefix, and the value has to be your personal access token from GitHub.
 
 {title=".env",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN=xxxXXX
-~~~~~~~~
+~~~~~~~
 
 Now, you can pass the personal access token as environment variable to your axios configuration with string interpolation ([template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)) to create a configured axios instance.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 const axiosGitHubGraphQL = axios.create({
@@ -116,7 +116,7 @@ const axiosGitHubGraphQL = axios.create({
 });
 
 ...
-~~~~~~~~
+~~~~~~~
 
 The initial axios setup is essentially the same as we completed using the GraphiQL application before to access GitHub's GraphQL API, when you had to set a header with a personal access token and endpoint URL as well.
 
@@ -125,7 +125,7 @@ Next, set up a form for capturing details about a GitHub organization and reposi
 Let's tackle implementing this scenario in two steps. The render method has to render a form with an input field. The form has to have an `onSubmit` handler, and the input field needs an `onChange` handler. The input field uses the `path` from the local state as a value to be a [controlled component](https://www.robinwieruch.de/react-controlled-components/). The `path` value in the local state from the `onChange` handler updates in the second step.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   render() {
     return (
@@ -152,12 +152,12 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 Declare the class methods to be used in the render method. The `componentDidMount()` lifecycle method can be used to make an initial request when the App component mounts. There needs to be an initial state for the input field to make an initial request in this lifecycle method.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   state = {
     path: 'the-road-to-learn-react/the-road-to-learn-react',
@@ -181,14 +181,14 @@ class App extends Component {
     ...
   }
 }
-~~~~~~~~
+~~~~~~~
 
 The previous implementation uses a React class component syntax you might have not used before. If you are not familiar with it, check this [GitHub repository](https://github.com/the-road-to-learn-react/react-alternative-class-component-syntax) to gain more understanding. Using **class field declarations** lets you omit the constructor statement for initializing the local state, and eliminates the need to bind class methods. Instead, arrow functions will handle all the binding.
 
 Following a best practice in React, make the input field a controlled component. The input element shouldn't be used to handle its internal state using native HTML behavior; it should be React.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -224,7 +224,7 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 The previous setup for the form--using input field(s), a submit button, `onChange()` and `onSubmit()` class methods--is a common way to implement forms in React. The only addition is the initial data fetching in the `componentDidMount()` lifecycle method to improve user experience by providing an initial state for the query to request data from the backend. It is a useful foundation for [fetching data from a third-party API in React](https://www.robinwieruch.de/react-fetching-data/).
 
@@ -243,7 +243,7 @@ You might wonder why there is only one input field to grab the information about
 In this section, you are going to implement your first GraphQL query in React, fetching issues from an organization's repository, though not all at once. Start by fetching only an organization. Let's define the query as a variable above of the App component.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ORGANIZATION = `
   {
     organization(login: "the-road-to-learn-react") {
@@ -252,12 +252,12 @@ const GET_ORGANIZATION = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Use template literals in JavaScript to define the query as string with multiple lines. It should be identical to the query you used before in GraphiQL or GitHub Explorer. Now, you can use axios to make a POST request to GitHub's GraphiQL API. The configuration for axios already points to the correct API endpoint and uses your personal access token. The only thing left is passing the query to it as payload during a POST request. The argument for the endpoint can be an empty string, because you defined the endpoint in the configuration. It will execute the request when the App component mounts in `componentDidMount()`. After the promise from axios has been resolved, only a console log of the result remains.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 ...
 
 const axiosGitHubGraphQL = axios.create({
@@ -303,14 +303,14 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 You used only axios to perform a HTTP POST request with a GraphQL query as payload. Since axios uses promises, the promise resolves eventually and you should have the result from the GraphQL API in your hands. There is nothing magical about it. It's an implementation in plain JavaScript using axios as HTTP client to perform the GraphQL request with plain HTTP.
 
 Start your application again and verify that you have got the result in your developer console log. If you get a [401 HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes), you didn't set up your personal access token properly. Otherwise, if everything went fine, you should see a similar result in your developer console log.
 
 {title="Developer Tools",lang="json"}
-~~~~~~~~
+~~~~~~~
 {
   "config": ...,
   "data":{
@@ -326,14 +326,14 @@ Start your application again and verify that you have got the result in your dev
   "status": ...,
   "statusText": ...
 }
-~~~~~~~~
+~~~~~~~
 
 The top level information is everything axios returns you as meta information for the request. It's all axios, and nothing related to GraphQL yet, which is why most of it is substituted with a placeholder. Axios has a `data` property that shows the result of your axios request. Then again comes a `data` property which reflects the GraphQL result. At first, the `data` property seems redundant in the first result, but once you examine it you will know that one `data` property comes from axios, while the other comes from the GraphQL data structure. Finally, you find the result of the GraphQL query in the second `data` property. There, you should find the organization with its resolved name and url fields as string properties.
 
 In the next step, you're going to store the result holding the information about the organization in React's local state. You will also store potential errors in the state if any occur.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   state = {
     path: 'the-road-to-learn-react/the-road-to-learn-react',
@@ -361,12 +361,12 @@ class App extends Component {
   ...
 
 }
-~~~~~~~~
+~~~~~~~
 
 In the second step, you can display the information about the organization in your App component's `render()` method:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -392,12 +392,12 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 Introduce the Organization component as a new functional stateless component to keep the render method of the App component concise. Because this application is going to be a simple GitHub issue tracker, you can already mention it in a short paragraph.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 }
@@ -412,12 +412,12 @@ const Organization = ({ organization }) => (
   </div>
 );
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 In the final step, you have to decide what should be rendered when nothing is fetched yet, and what should be rendered when errors occur. To solve these edge cases, you can use [conditional rendering](https://www.robinwieruch.de/conditional-rendering-react/) in React. For the first edge case, simply check whether an `organization` is present or not.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -443,12 +443,12 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 For the second edge case, you have passed the errors to the Organization component. In case there are errors, it should simply render the error message of each error. Otherwise, it should render the organization. There can be multiple errors regarding different fields and circumstances in GraphQL.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const Organization = ({ organization, errors }) => {
   if (errors) {
@@ -470,7 +470,7 @@ const Organization = ({ organization, errors }) => {
   );
 };
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 You performed your first GraphQL query in a React application, a plain HTTP POST request with a query as payload. You used a configured axios client instance for it. Afterward, you were able to store the result in React's local state to display it later.
 
@@ -479,7 +479,7 @@ You performed your first GraphQL query in a React application, a plain HTTP POST
 Next, we'll request a nested object for the organization. Since the application will eventually show the issues in a repository, you should fetch a repository of an organization as the next step. Remember, a query reaches into the GraphQL graph, so we can nest the `repository` field in the `organization` when the schema defined the relationship between these two entities.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const GET_REPOSITORY_OF_ORGANIZATION = `
 # leanpub-end-insert
@@ -512,12 +512,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 In this case, the repository name is identical to the organization. That's okay for now. Later on, you can define an organization and repository on your own dynamically. In the second step, you can extend the Organization component with another Repository component as child component. The result for the query should now have a nested repository object in the organization object.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Organization = ({ organization, errors }) => {
   if (errors) {
     ...
@@ -546,7 +546,7 @@ const Repository = ({ repository }) => (
   </div>
 );
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 The GraphQL query structure aligns perfectly with your component tree. It forms a natural fit to continue extending the query structure like this, by nesting other objects into the query, and extending the component tree along the structure of the GraphQL query. Since the application is an issue tracker, we need to add a list field of issues to the query.
 
@@ -555,7 +555,7 @@ If you want to follow the query structure more thoughtfully, open the "Docs" sid
 Now let's extend the query with the list field for the issues. These issues are a paginated list in the end. We will cover these more later; for now, nest it in the `repository` field with a `last` argument to fetch the last items of the list.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const GET_ISSUES_OF_REPOSITORY = `
 # leanpub-end-insert
@@ -581,12 +581,12 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 You can also request an id for each issue using the `id` field on the issue's `node` field, to use a `key` attribute for your list of rendered items in the component, which is considered [best practice in React](https://reactjs.org/docs/lists-and-keys.html). Remember to adjust the name of the query variable when its used to perform the request.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -602,12 +602,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 The component structure follows the query structure quite naturally again. You can add a list of rendered issues to the Repository component. It is up to you to extract it to its own component as a refactoring to keep your components concise, readable, and maintainable.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({ repository }) => (
   <div>
     <p>
@@ -626,7 +626,7 @@ const Repository = ({ repository }) => (
 # leanpub-end-insert
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 That's it for the nested objects, fields, and list fields in a query. Once you run your application again, you should see the last issues of the specified repository rendered in your browser.
 
@@ -637,7 +637,7 @@ Next we'll make use of the form and input elements. They should be used to reque
 First, let's use a naive approach by performing string interpolation with JavaScript rather than using GraphQL variables. To do this, refactor the query from a template literal variable to a function that returns a template literal variable. By using the function, you should be able to pass in an organization and repository.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const getIssuesOfRepositoryQuery = (organization, repository) => `
 # leanpub-end-insert
@@ -665,12 +665,12 @@ const getIssuesOfRepositoryQuery = (organization, repository) => `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Next, call the `onFetchFromGitHub()` class method in the submit handle, but also when the component mounts in `componentDidMount()` with the initial local state of the `path` property. These are the two essential places to fetch the data from the GraphQL API on initial render, and on every other manual submission from a button click.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   state = {
     path: 'the-road-to-learn-react/the-road-to-learn-react',
@@ -704,12 +704,12 @@ class App extends Component {
     ...
   }
 }
-~~~~~~~~
+~~~~~~~
 
 Lastly, call the function that returns the query instead of passing the query string directly as payload. Use the [JavaScript's split method on a string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) to retrieve the prefix and suffix of the `/` character from the path variable where the prefix is the organization and the suffix is the repository.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -734,7 +734,7 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 Since the split returns an array of values and it is assumed that there is only one slash in the path, the array should consist of two values: the organization and the repository. That's why it is convenient to use a JavaScript array destructuring to pull out both values from an array in the same line.
 
@@ -743,7 +743,7 @@ Note that the application is not built for to be robust, but is intended only as
 If you want to go further, you can extract the first part of the class method to its own function, which uses axios to send a request with the query and return a promise. The promise can be used to resolve the result into the local state, using `this.setState()` in the `then()` resolver block of the promise.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const getIssuesOfRepository = path => {
   const [organization, repository] = path.split('/');
@@ -770,12 +770,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 You can always split your applications into parts, be they functions or components, to make them concise, readable, reusable and [testable](https://www.robinwieruch.de/react-testing-tutorial/). The function that is passed to `this.setState()` can be extracted as higher-order function. It has to be a higher-order function, because you need to pass the result of the promise, but also provide a function for the `this.setState()` method.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const resolveIssuesQuery = queryResult => () => ({
   organization: queryResult.data.data.organization,
@@ -796,14 +796,14 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 Now you've made your query flexible by providing dynamic arguments to your query. Try it by starting your application on the command line and by filling in a different organization with a specific repository (e.g. *facebook/create-react-app*).
 
 It's a decent setup, but there was nothing to see about variables yet. You simply passed the arguments to the query using a function and string interpolation with template literals. Now we'll use GraphQL variables instead, to refactor the query variable again to a template literal that defines inline variables.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const GET_ISSUES_OF_REPOSITORY = `
   query ($organization: String!, $repository: String!) {
@@ -829,12 +829,12 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Now you can pass those variables as arguments next to the query for the HTTP POST request:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const getIssuesOfRepository = path => {
   const [organization, repository] = path.split('/');
 
@@ -845,7 +845,7 @@ const getIssuesOfRepository = path => {
 # leanpub-end-insert
   });
 };
-~~~~~~~~
+~~~~~~~
 
 Finally, the query takes variables into account without detouring into a function with string interpolation. I strongly suggest practicing with the exercises below before continuing to the next section. We've yet to discuss features like fragments or operation names, but we'll soon cover them using Apollo instead of plain HTTP with axios.
 
@@ -866,7 +866,7 @@ In this section, you will explore pagination with list fields with GraphQL in Re
 Let's start by extending the `issues` list field in your query with one more argument:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query ($organization: String!, $repository: String!) {
     organization(login: $organization) {
@@ -890,14 +890,14 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 If you read the arguments for the `issues` list field using the "Docs" sidebar in GraphiQL, you can explore which arguments you can pass to the field. One of these is the `states` argument, which defines whether or not to fetch open or closed issues. The previous implementation of the query has shown you how to refine the list field, in case you only want to show open issues. You can explore more arguments for the `issues` list field, but also for other list fields, using the documentation from Github's API.
 
 Now we'll implement another nested list field that could be used for pagination. Each issue in a repository can have reactions, essentially emoticons like a smiley or a thumbs up. Reactions can be seen as another list of paginated items. First, extend the query with the nested list field for reactions:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query ($organization: String!, $repository: String!) {
     organization(login: $organization) {
@@ -929,12 +929,12 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Second, render the list of reactions in one of your React components again. Implement dedicated List and Item components, such as ReactionsList and ReactionItem for it. As an exercise, try keeping the code for this application readable and maintainable.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({ repository }) => (
   <div>
     ...
@@ -956,14 +956,14 @@ const Repository = ({ repository }) => (
     </ul>
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 You extended the query and React's component structure to render the result. It's a straightforward implementation when you are using a GraphQL API as your data source which has a well defined underlying schema for these field relationships.
 
 Lastly, you will implement real pagination with the `issues` list field, as there should be a button to fetch more issues from the GraphQL API to make it a function of a completed application. Here is how to implement a button:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({
   repository,
 # leanpub-start-insert
@@ -986,12 +986,12 @@ const Repository = ({
 # leanpub-end-insert
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 The handler for the button passes through all the components to reach the Repository component:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Organization = ({
   organization,
   errors,
@@ -1016,12 +1016,12 @@ const Organization = ({
     </div>
   );
 };
-~~~~~~~~
+~~~~~~~
 
 Logic for the function is implemented in the App component as class method. It passes to the Organization component as well.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -1053,12 +1053,12 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 Before implementing the logic for it, there needs to be a way to identify the next page of the paginated list. To extend the inner fields of a list field with fields for meta information such as the `pageInfo` or the `totalCount` information, use `pageInfo` to define the next page on button-click. Also, the `totalCount` is only a nice way to see how many items are in the next list:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query ($organization: String!, $repository: String!) {
     organization(login: $organization) {
@@ -1082,12 +1082,12 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Now, you can use this information to fetch the next page of issues by providing the cursor as a variable to your query. The cursor, or the `after` argument, defines the starting point to fetch more items from the paginated list.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -1105,12 +1105,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 The second argument wasn't introduced  to the `onFetchFromGitHub()` class method yet. Let's see how that turns out.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const getIssuesOfRepository = (path, cursor) => {
 # leanpub-end-insert
@@ -1137,12 +1137,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 The argument is simply passed to the `getIssuesOfRepository()` function, which makes the GraphQL API request, and returns the promise with the query result. Check the other functions that call the `onFetchFromGitHub()` class method, and notice how they don't make use of the second argument, so the cursor parameter will be `undefined` when it's passed to the GraphQL API call. Either the query uses the cursor as argument to fetch the next page of a list, or it fetches the initial page of a list by having the cursor not defined at all:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query (
     $organization: String!,
@@ -1172,14 +1172,14 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 In the previous template string, the `cursor` is passed as variable to the query and used as `after` argument for the list field. The variable is not enforced though, because there is no exclamation mark next to it, so it can be `undefined`. This happens for the initial page request for a paginated list, when you only want to fetch the first page. Further, the argument `last` has been changed to `first` for the `issues` list field, because there won't be another page after you fetched the last item in the initial request. Thus, you have to start with the first items of the list to fetch more items until you reach the end of the list.
 
 That's it for fetching the next page of a paginated list with GraphQL in React, except one final step. Nothing updates the local state of the App component about a page of issues yet, so there are still only the issues from the initial request. You want to merge the old pages of issues with the new page of issues in the local state of the App component, while keeping the organization and repository information in the deeply nested state object intact. The perfect time for doing this is when the promise for the query resolves. You already extracted it as a function outside of the App component, so you can use this place to handle the incoming result and return a result with your own structure and information. Keep in mind that the incoming result can be an initial request when the App component mounts for the first time, or after a request to fetch more issues happens, such as when the "More" button is clicked.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const resolveIssuesQuery = (queryResult, cursor) => state => {
   const { data, errors } = queryResult.data;
@@ -1210,14 +1210,14 @@ const resolveIssuesQuery = (queryResult, cursor) => state => {
   };
 };
 # leanpub-end-insert
-~~~~~~~~
+~~~~~~~
 
 The function is a complete rewrite, because the update mechanism is more complex now. First, you passed the `cursor` as an argument to the function, which determines whether it was an initial query or a query to fetch another page of issues. Second, if the `cursor` is `undefined`, the function can return early with the state object that encapsulates the plain query result, same as before. There is nothing to keep intact in the state object from before, because it is an initial request that happens when the App component mounts or when a user submits another request which should overwrite the old state anyway. Third, if it is a fetch more query and the cursor is there, the old and new issues from the state and the query result get merged in an updated list of issues. In this case, a JavaScript destructuring alias is used to make naming both issue lists more obvious. Finally, the function returns the updated state object. Since it is a deeply nested object with multiple levels to update, use the JavaScript spread operator syntax to update each level with a new query result. Only the `edges` property should be updated with the merged list of issues.
 
 Next, use the `hasNextPage` property from the `pageInfo` that you requested to show a "More" button (or not). If there are no more issues in the list, the button should disappear.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({ repository, onFetchMoreIssues }) => (
   <div>
     ...
@@ -1233,7 +1233,7 @@ const Repository = ({ repository, onFetchMoreIssues }) => (
 # leanpub-end-insert
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 Now you've implemented pagination with GraphQL in React. For practice, try more arguments for your issues and reactions list fields on your own. Check the "Docs" sidebar in GraphiQL to find out about arguments you can pass to list fields. Some arguments are generic, but have arguments that are specific to lists. These arguments should show you how finely-tuned requests can be with a GraphQL query.
 
@@ -1251,7 +1251,7 @@ You fetched a lot of data using GraphQL in React, the larger part of using Graph
 You have executed GitHub's `addStar` mutation before in GraphiQL. Now, let's implement this mutation in React. Before implementing the mutation, you should query additional information about the repository, which is partially required to star the repository in a mutation.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query (
     $organization: String!,
@@ -1277,14 +1277,14 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 The `viewerHasStarred` field returns a boolean that tells whether the viewer has starred the repository or not. This boolean helps determine whether to execute a `addStar` or `removeStar` mutation in the next steps. For now, you will only implement the `addStar` mutation. The `removeStar` mutation will be left off as part of the exercise. Also, the `id` field in the query returns the identifier for the repository, which you will need to clarify the target repository of your mutation.
 
 The best place to trigger the mutation is a button that stars or unstars the repository. That's where the `viewerHasStarred` boolean can be used for a conditional rendering to show either a "Star" or "Unstar" button. Since you are going to star a repository, the Repository component is the best place to trigger the mutation.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({
   repository,
   onFetchMoreIssues,
@@ -1309,12 +1309,12 @@ const Repository = ({
     </ul>
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 To identify the repository to be starred, the mutation needs to know about the `id` of the repository. Pass the `viewerHasStarred` property as a parameter to the handler, since you'll use the parameter to determine whether you want to execute the star or unstar mutation later.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({ repository, onStarRepository }) => (
   <div>
     ...
@@ -1333,12 +1333,12 @@ const Repository = ({ repository, onStarRepository }) => (
     ...
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 The handler should be defined in the App component. It passes through each component until it reaches the Repository component, also reaching through the Organization component on its way.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Organization = ({
   organization,
   errors,
@@ -1362,12 +1362,12 @@ const Organization = ({
     </div>
   );
 };
-~~~~~~~~
+~~~~~~~
 
 Now it can be defined in the App component. Note that the `id` and the `viewerHasStarred` information can be destructured from the App's local state, too. This is why you wouldn't need to pass this information in the handler, but use it from the local state instead. However, since the Repository component knew about the information already, it is fine to pass the information in the handler, which also makes the handler more explicit. It's also good preparation for dealing with multiple repositories and repository components later, since the handler will need to be more specific in these cases.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 class App extends Component {
   ...
 
@@ -1400,12 +1400,12 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+~~~~~~~
 
 Now, you can implement the handler. The mutation can be outsourced from the component. Later, you can use the `viewerHasStarred` boolean in the handler to perform a `addStar` or `removeStar` mutation. Executing the mutation looks similar to the GraphQL query from before. The API endpoint is not needed, because it was set in the beginning when you configured axios. The mutation can be sent in the `query` payload, which we'll cover later. The `variables` property is optional, but you need to pass the identifier.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const addStarToRepository = repositoryId => {
   return axiosGitHubGraphQL.post('', {
@@ -1426,12 +1426,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 Before you define the `addStar` mutation, check GitHub's GraphQL API again. There, you will find all information about the structure of the mutation, the required arguments, and the available fields for the result. For instance, you can include the `viewerHasStarred` field in the returned result to get an updated boolean of a starred or unstarred repository.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const ADD_STAR = `
   mutation ($repositoryId: ID!) {
     addStar(input:{starrableId:$repositoryId}) {
@@ -1441,12 +1441,12 @@ const ADD_STAR = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 You could already execute the mutation in the browser by clicking the button. If you haven't starred the repository before, it should be starred after clicking the button. You can visit the repository on GitHub to get visual feedback, though you won't see any results reflected yet. The button still shows the "Star" label when the repository wasn't starred before, because the `viewerHasStarred` boolean wasn't updated in the local state of the App component after the mutation. That's the next thing you are going to implement. Since axios returns a promise, you can use the `then()` method on the promise to resolve it with your own implementation details.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 # leanpub-start-insert
 const resolveAddStarMutation = mutationResult => state => {
   ...
@@ -1466,12 +1466,12 @@ class App extends Component {
 
   ...
 }
-~~~~~~~~
+~~~~~~~
 
 When resolving the promise from the mutation, you can find out about the `viewerHasStarred` property in the result. That's because you defined this property as a field in your mutation. It returns a new state object for React's local state, because you used the function in `this.setState()`. The spread operator syntax is used here, to update the deeply nested data structure. Only the `viewerHasStarred` property changes in the state object, because it's the only property returned by the resolved promise from the successful request. All other parts of the local state stay intact.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const resolveAddStarMutation = mutationResult => state => {
 # leanpub-start-insert
   const {
@@ -1490,14 +1490,14 @@ const resolveAddStarMutation = mutationResult => state => {
   };
 # leanpub-end-insert
 };
-~~~~~~~~
+~~~~~~~
 
 Now try to star the repository again. You may have to go on the GitHub page and unstar it first. The button label should adapt to the updated `viewerHasStarred` property from the local state to show a "Star" or "Unstar" label. You can use what you've learned about starring repositories to implement a `removeStar` mutation.
 
  We also want to show the current number of people who have starred the repository, and update this count in the `addStar` and `removeStar` mutations. First, retrieve the total count of stargazers by adding the following fields to your query:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const GET_ISSUES_OF_REPOSITORY = `
   query (
     $organization: String!,
@@ -1524,12 +1524,12 @@ const GET_ISSUES_OF_REPOSITORY = `
     }
   }
 `;
-~~~~~~~~
+~~~~~~~
 
 Second, you can show the count as a part of your button label:
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const Repository = ({
   repository,
   onFetchMoreIssues,
@@ -1555,12 +1555,12 @@ const Repository = ({
     </ul>
   </div>
 );
-~~~~~~~~
+~~~~~~~
 
 Now we want the count to update when you star (or unstar) a repository. It is the same issue as the missing update for the `viewerHasStarred` property in the local state of the component after the `addStar` mutation succeeded. Return to your mutation resolver and update the total count of stargazers there as well. While the stargazer object isn't returned as a result from the mutation, you can increment and decrement the total count after a successful mutation manually using a counter along with the `addStar` mutation.
 
 {title="src/App.js",lang="javascript"}
-~~~~~~~~
+~~~~~~~
 const resolveAddStarMutation = mutationResult => state => {
   const {
     viewerHasStarred,
@@ -1586,7 +1586,7 @@ const resolveAddStarMutation = mutationResult => state => {
     },
   };
 };
-~~~~~~~~
+~~~~~~~
 
 You have implemented your first mutation in React with GraphQL. So far, you have just implemented the `addStar` mutation. Even though the button already reflects the `viewerHasStarred` boolean by showing a "Star" or "Unstar" label, the button showing "Unstar" should still execute the `addStar` mutation. The `removeStar` mutation to unstar the repository is one of the practice exercises mentioned below.
 
