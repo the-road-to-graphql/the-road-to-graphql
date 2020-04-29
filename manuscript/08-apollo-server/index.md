@@ -927,7 +927,7 @@ And import it to your file:
 
 {title="src/index.js",lang="javascript"}
 ~~~~~~~
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 ~~~~~~~
 
 Now you can give your message a unique identifier:
@@ -1164,7 +1164,7 @@ Since you have passed the models to your Apollo Server context, they are accessi
 
 {title="src/resolvers/index.js",lang="javascript"}
 ~~~~~~~
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   Query: {
@@ -1397,7 +1397,7 @@ Next, add the message resolvers in the *src/resolvers/message.js* file:
 
 {title="src/resolvers/message.js",lang="javascript"}
 ~~~~~~~
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   Query: {
