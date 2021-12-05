@@ -275,7 +275,7 @@ You have seen a similar query structure in the application we created earlier, s
   * Confirm the [changes from the last section](http://bit.ly/2Vneiw4)
 * Explore GitHub's GraphQL API
   * Extend the `repositories` list field by querying an ordered list of repositories which is ordered by the number of stargazers
-* Extract the content of a repository `node` to a GraphQL a reusable fragment
+* Extract the content of a repository `node` to a GraphQL reusable fragment
 * Read more about [pagination in GraphQL](https://graphql.org/learn/pagination)
 * Add the pagination feature for list of repositories
   * Add the `pageInfo` field with its `endCursor` and `hasNextPage` fields in the query
