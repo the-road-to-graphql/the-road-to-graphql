@@ -19,7 +19,7 @@ Install these two dependencies to the *package.json* file and *node_modules* fol
 npm install apollo-server apollo-server-express --save
 ~~~~~~~
 
-As you can see by the library names, you can use any other middleware solution (e.g. Koa, Hapi) to complement your standalone Apollo Server. Apart from these libraries for Apollo Server, you need the core libraries for Express and GraphQL:
+As you can see by the library names, you can use any other middleware solution (e.g. Koa, Hapi) to complement your standalone Apollo Server. Apart from these libraries for Apollo Server, you need the core libraries for Express and GraphQL(Why?because they are PeerDependencies and aren't dependencies):
 
 {title="Command Line",lang="json"}
 ~~~~~~~
